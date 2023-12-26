@@ -1,7 +1,7 @@
 import axios from "axios"
 import articles from "../assets/json/articles.json"
 
-const API_KEY = "3fd956990f414d3eab0bdbea41c2f754"
+const API_KEY = "2a619d7b07fd4278bd2f9012d6bd4787"
 
 export const articleService = {
   query,
@@ -11,7 +11,7 @@ export const articleService = {
 }
 
 async function query(filterBy = { title: "" }) {
-  console.log("filterBy: ", filterBy)
+  // console.log("filterBy: ", filterBy)
   let baseUrl = "https://newsapi.org/v2/"
 
   if (filterBy.type === "everything") {

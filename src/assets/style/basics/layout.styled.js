@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
-export const MainLayout = styled.div`
+export const MainLayout = styled.main`
   display: grid;
-  grid-template-columns: 1fr 1024px 1fr;
+  grid-template-columns: 1fr 1440px 1fr;
 
   & > * {
     grid-column: 2;

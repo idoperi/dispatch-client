@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
-import { articleService } from "../services/article.service"
-import { ArticleList } from "./ArticleList"
+import { articleService } from "../../services/article.service"
+import { ArticleList } from "../ArticleList"
 import { useQuery, useQueryClient } from "react-query"
+import { GraphsContainer } from "../GraphsContainer/GraphsContainer"
+import { StyledArticleIndex } from "./styles"
 
 export function ArticleIndex() {
   const queryClient = useQueryClient()
@@ -25,8 +27,10 @@ export function ArticleIndex() {
   }
 
   return (
-    <section className="article-index">
+    <StyledArticleIndex>
       <ArticleList articles={articles} />
-    </section>
+
+      <GraphsContainer articles={articles} />
+    </StyledArticleIndex>
   )
 }

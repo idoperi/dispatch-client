@@ -13,13 +13,12 @@ function App() {
 
   return (
     <Router>
+      <AppHeader />
       <MainLayout
         onClick={() => {
           queryClient.setQueryData("isDisplaySearchModal", false)
         }}
       >
-        <AppHeader />
-
         <Routes>
           <Route path="/" element={<HomePage />} />
         </Routes>
