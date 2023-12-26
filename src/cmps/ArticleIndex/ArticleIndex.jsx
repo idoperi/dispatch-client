@@ -29,7 +29,6 @@ export function ArticleIndex() {
   return (
     <StyledArticleIndex>
       <ArticleList articles={articles} />
-
       <GraphsContainer articles={articles} />
     </StyledArticleIndex>
   )

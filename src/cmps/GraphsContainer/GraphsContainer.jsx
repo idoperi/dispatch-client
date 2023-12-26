@@ -1,11 +1,10 @@
 import { SourcesGraph } from "./SourcesGraph/SourcesGraph"
-import { StyledContainer } from "./styles"
+import { ContainerLayout } from "./styles"
 
 export function GraphsContainer({ articles }) {
-  console.log("articles: ", articles)
   return (
-    <StyledContainer>
-      <SourcesGraph />
-    </StyledContainer>
+    <ContainerLayout>
+      <SourcesGraph articles={articles} />
+    </ContainerLayout>
   )
 }

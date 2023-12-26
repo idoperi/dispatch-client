@@ -5,6 +5,8 @@ import { AppHeader } from "./cmps//AppHeader/AppHeader"
 import { useQueryClient } from "react-query"
 import { articleService } from "./services/article.service"
 import { MainLayout } from "./assets/style/basics/layout.styled"
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js"
+ChartJS.register(ArcElement, Tooltip, Legend)
 
 function App() {
   const queryClient = useQueryClient()
