@@ -1,0 +1,14 @@
+// GRIDS
+
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr em(1024px) 1fr;
+
+  & > * {
+    grid-column: 2;
+  }
+
+  & > .full {
+    grid-column: 1 / -1;
+  }
+}
