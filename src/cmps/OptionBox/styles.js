@@ -36,6 +36,14 @@ export const ModalForm = styled.form`
   max-height: 190px;
   overflow-y: auto;
   box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.08);
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb:vertical {
+    background-color: #5a5a89;
+  }
 `
 
 export const RadioInputContainer = styled.div`

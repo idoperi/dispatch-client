@@ -42,8 +42,6 @@ export function ArticleIndex() {
       ) : (
         <ResultsLabel>{totalResults} Total results</ResultsLabel>
       )}
-      {/* <LandingTitle>Top Headlines in Israel</LandingTitle>
-      <ResultsLabel>{articlesData.totalResults} Total results</ResultsLabel> */}
       <ArticleList articles={articles} />
       <GraphsContainer articles={articles} />
     </StyledArticleIndex>

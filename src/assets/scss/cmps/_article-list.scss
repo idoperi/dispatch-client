@@ -1,6 +1,8 @@
 .article-list {
   display: grid;
   gap: 24px;
+
+  overflow-y: scroll;
 }
 
 .empty-data-container {
