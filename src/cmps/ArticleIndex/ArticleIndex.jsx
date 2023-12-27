@@ -6,6 +6,7 @@ import { GraphsContainer } from "../GraphsContainer/GraphsContainer"
 import { StyledArticleIndex } from "./styles"
 
 export function ArticleIndex() {
+  // hi its index
   const queryClient = useQueryClient()
 
   const { data: filterBy } = useQuery("filterBy", () =>
