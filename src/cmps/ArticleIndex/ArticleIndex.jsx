@@ -33,17 +33,19 @@ export function ArticleIndex() {
     return <div>Error fetching data</div>
   }
 
+  const { articles, totalResults } = articlesData
+
   return (
     <StyledArticleIndex>
       {isFirstRender.current ? (
         <LandingTitle>Top Headlines in Israel</LandingTitle>
       ) : (
-        <ResultsLabel>{articlesData.totalResults} Total results</ResultsLabel>
+        <ResultsLabel>{totalResults} Total results</ResultsLabel>
       )}
       {/* <LandingTitle>Top Headlines in Israel</LandingTitle>
       <ResultsLabel>{articlesData.totalResults} Total results</ResultsLabel> */}
-      <ArticleList articles={articlesData.articles} />
-      <GraphsContainer articles={articlesData.articles} />
+      <ArticleList articles={articles} />
+      <GraphsContainer articles={articles} />
     </StyledArticleIndex>
   )
 }
