@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { articleService } from "../../services/article.service"
 import { ArticleList } from "../ArticleList"
 import { useQuery, useQueryClient } from "react-query"
 import { GraphsContainer } from "../GraphsContainer/GraphsContainer"
-import { StyledArticleIndex } from "./styles"
+import { LandingTitle, ResultsLabel, StyledArticleIndex } from "./styles"
+import { useEffectUpdate } from "../../customHooks/useEffectUpdate"
 
 export function ArticleIndex() {
-  // hi its index
   const queryClient = useQueryClient()
 
   const { data: filterBy } = useQuery("filterBy", () =>
@@ -14,10 +14,16 @@ export function ArticleIndex() {
   )
 
   const {
-    data: articles,
+    data: articlesData,
     isLoading,
     isError,
   } = useQuery(["articles", filterBy], () => articleService.query(filterBy))
+
+  const isFirstRender = useRef(true)
+
+  useEffectUpdate(() => {
+    isFirstRender.current = false
+  }, [filterBy])
 
   if (isLoading) {
     return <div>Loading...</div>
@@ -29,8 +35,15 @@ export function ArticleIndex() {
 
   return (
     <StyledArticleIndex>
-      <ArticleList articles={articles} />
-      <GraphsContainer articles={articles} />
+      {isFirstRender.current ? (
+        <LandingTitle>Top Headlines in Israel</LandingTitle>
+      ) : (
+        <ResultsLabel>{articlesData.totalResults} Total results</ResultsLabel>
+      )}
+      {/* <LandingTitle>Top Headlines in Israel</LandingTitle>
+      <ResultsLabel>{articlesData.totalResults} Total results</ResultsLabel> */}
+      <ArticleList articles={articlesData.articles} />
+      <GraphsContainer articles={articlesData.articles} />
     </StyledArticleIndex>
   )
 }
