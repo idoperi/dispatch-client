@@ -1,20 +1,24 @@
 import { ArticlePreview } from "./ArticlePreview"
 import notFound from "../assets/icons/not-found.svg"
+import {
+  NoDataPlaceholder,
+  Text,
+} from "../assets/style/cmps/NoDataPlaceholder.styled"
 
 export function ArticleList({ articles, onScroll }) {
   if (articles.length === 0) {
     return (
-      <section className="empty-data-container">
+      <NoDataPlaceholder>
         <img src={notFound} alt="" />
-        <p className="text">We couldn’t find any matches for your query</p>
-      </section>
+        <Text>No data to display</Text>
+      </NoDataPlaceholder>
     )
   }
 
   return (
     <ul className={`article-list`} onScroll={onScroll}>
-      {articles.map((article) => (
-        <ArticlePreview key={article.title} article={article} />
+      {articles.map((article, idx) => (
+        <ArticlePreview key={idx} article={article} />
       ))}
     </ul>
   )

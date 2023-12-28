@@ -3,14 +3,14 @@ import { Doughnut } from "react-chartjs-2"
 import {
   DoughnutContainer,
   DoughnutTitle,
-  GraphContainer,
   LabelList,
   LabelPreview,
-  SeparateLine,
-  Title,
-  TopContainer,
 } from "./styles"
 import chart from "../../../assets/icons/chart.svg"
+import {
+  NoDataPlaceholder,
+  Text,
+} from "../../../assets/style/cmps/NoDataPlaceholder.styled"
 
 export function SourcesGraph({ articles }) {
   const sourceLabels = articles.map((article) => article.source.name)
@@ -53,36 +53,31 @@ export function SourcesGraph({ articles }) {
     color: colors[index],
   }))
 
+  if (articles.length === 0) {
+    return (
+      <NoDataPlaceholder size="sm">
+        <img src={chart} alt="" />
+        <Text>No data to display</Text>
+      </NoDataPlaceholder>
+    )
+  }
+
   return (
-    <GraphContainer>
-      <TopContainer>
-        <Title>Sources</Title>
-        <SeparateLine />
-      </TopContainer>
+    <div>
+      <DoughnutContainer>
+        <Doughnut data={data} options={options} />
+        <DoughnutTitle>Sum</DoughnutTitle>
+      </DoughnutContainer>
 
-      {articles.length === 0 ? (
-        <section className="empty-data-container small">
-          <img src={chart} alt="" />
-          <p className="text">No data to display</p>
-        </section>
-      ) : (
-        <>
-          <DoughnutContainer>
-            <Doughnut data={data} options={options} />
-            <DoughnutTitle>Sum</DoughnutTitle>
-          </DoughnutContainer>
-
-          <LabelList>
-            {labelsWithColors.map((item, index) => (
-              <LabelPreview key={index} color={item.color}>
-                <div className="dot"></div>
-                <p className="label-name">{item.label}</p>
-                <span className="percentages">{percentages[index]}%</span>
-              </LabelPreview>
-            ))}
-          </LabelList>
-        </>
-      )}
-    </GraphContainer>
+      <LabelList>
+        {labelsWithColors.map((item, index) => (
+          <LabelPreview key={index} color={item.color}>
+            <div className="dot"></div>
+            <p className="label-name">{item.label}</p>
+            <span className="percentages">{percentages[index]}%</span>
+          </LabelPreview>
+        ))}
+      </LabelList>
+    </div>
   )
 }
