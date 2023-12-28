@@ -1,7 +1,7 @@
 import { ArticlePreview } from "./ArticlePreview"
 import notFound from "../assets/icons/not-found.svg"
 
-export function ArticleList({ articles }) {
+export function ArticleList({ articles, onScroll }) {
   if (articles.length === 0)
     return (
       <section className="empty-data-container">
@@ -11,7 +11,7 @@ export function ArticleList({ articles }) {
     )
 
   return (
-    <ul className={`article-list`}>
+    <ul className={`article-list`} onScroll={onScroll}>
       {articles.map((article) => (
         <ArticlePreview key={article.title} article={article} />
       ))}
