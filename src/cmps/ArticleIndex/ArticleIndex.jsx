@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { articleService } from "../../services/article.service"
 import { ArticleList } from "../ArticleList"
-import { useQuery, useQueryClient } from "react-query"
+import { useInfiniteQuery, useQuery, useQueryClient } from "react-query"
 import { GraphsContainer } from "../GraphsContainer/GraphsContainer"
-import { StyledArticleIndex } from "./styles"
+import { LandingTitle, ResultsLabel, StyledArticleIndex } from "./styles"
+import { useEffectUpdate } from "../../customHooks/useEffectUpdate"
 
 export function ArticleIndex() {
-  // hi its index
   const queryClient = useQueryClient()
 
   const { data: filterBy } = useQuery("filterBy", () =>
@@ -14,10 +14,36 @@ export function ArticleIndex() {
   )
 
   const {
-    data: articles,
+    data: articlesData,
+    fetchNextPage,
     isLoading,
     isError,
-  } = useQuery(["articles", filterBy], () => articleService.query(filterBy))
+    hasNextPage,
+  } = useInfiniteQuery(
+    ["articles", filterBy],
+    ({ pageParam = 1 }) => {
+      return articleService.query({ ...filterBy, pageNumber: pageParam })
+    },
+    {
+      getNextPageParam: (lasePage, pages) => {
+        return pages.length + 1
+      },
+    }
+  )
+
+  const isFirstRender = useRef(true)
+
+  useEffectUpdate(() => {
+    isFirstRender.current = false
+  }, [filterBy])
+
+  const handleScroll = (e) => {
+    const bottom =
+      e.target.scrollHeight - e.target.scrollTop <= e.target.clientHeight + 1
+    if (bottom && hasNextPage) {
+      fetchNextPage()
+    }
+  }
 
   if (isLoading) {
     return <div>Loading...</div>
@@ -27,9 +53,17 @@ export function ArticleIndex() {
     return <div>Error fetching data</div>
   }
 
+  const articles = articlesData.pages.flatMap((page) => page.articles)
+  const totalResults = articlesData.pages[0]?.totalResults || 0
+
   return (
     <StyledArticleIndex>
-      <ArticleList articles={articles} />
+      {isFirstRender.current ? (
+        <LandingTitle>Top Headlines in Israel</LandingTitle>
+      ) : (
+        <ResultsLabel>{totalResults} Total results</ResultsLabel>
+      )}
+      <ArticleList articles={articles} onScroll={handleScroll} />
       <GraphsContainer articles={articles} />
     </StyledArticleIndex>
   )

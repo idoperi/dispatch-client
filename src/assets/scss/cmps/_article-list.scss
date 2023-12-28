@@ -1,4 +1,17 @@
 .article-list {
   display: grid;
   gap: 24px;
+
+  overflow-y: scroll;
+}
+
+.empty-data-container {
+  text-align: center;
+  padding: 275px 0 0 0;
+  .text {
+    font-size: 18px;
+    line-height: 21px;
+    color: #5a5a89;
+    margin: 16px 0 0 0;
+  }
 }

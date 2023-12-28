@@ -1,16 +1,16 @@
 import { ArticleFilter } from "../../cmps/ArticleFilter/ArticleFilter"
 import { ArticleIndex } from "../../cmps/ArticleIndex/ArticleIndex"
 import { GraphsContainer } from "../../cmps/GraphsContainer/GraphsContainer"
-import { SeparateLine } from "./styles"
+import { HomePageSection, SeparateLine } from "./styles"
 
 export function HomePage() {
   return (
-    <div className="home-page">
+    <HomePageSection>
       <ArticleFilter />
 
       <SeparateLine />
 
       <ArticleIndex />
-    </div>
+    </HomePageSection>
   )
 }
