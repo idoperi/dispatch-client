@@ -5,7 +5,7 @@ import {
   ModalForm,
   RadioInputContainer,
 } from "./styles"
-import dropdown from "../../assets/icons/dropdown.svg"
+import dropdown from "../../../assets/icons/dropdown.svg"
 
 export function OptionBox({
   name,

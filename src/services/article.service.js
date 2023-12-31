@@ -40,17 +40,17 @@ async function query(filterBy = { title: "" }) {
     }
   }
 
-  try {
-    const { data } = await axios.get(baseUrl)
-    const { articles, totalResults } = data
-    return { articles, totalResults }
-  } catch (error) {
-    console.log("error: ", error)
-  }
+  // try {
+  //   const { data } = await axios.get(baseUrl)
+  //   const { articles, totalResults } = data
+  //   return { articles, totalResults }
+  // } catch (error) {
+  //   console.log("error: ", error)
+  // }
 
-  // return new Promise((resolve) =>
-  //   setTimeout(() => resolve({ articles, totalResults: 10 }), 500)
-  // )
+  return new Promise((resolve) =>
+    setTimeout(() => resolve({ articles, totalResults: 10 }), 500)
+  )
 }
 
 function getEmptyArticleFilterBy() {
@@ -63,6 +63,8 @@ function getEmptyArticleFilterBy() {
     q: "",
     sortBy: "",
     pageNumber: 1,
+    from: "",
+    to: "",
   }
 }
 
