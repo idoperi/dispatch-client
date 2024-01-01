@@ -33,7 +33,9 @@ export function ArticleFilter() {
 
   return (
     <FilterContainer>
-      <DateFilter />
+      {filterBy.type === "everything" && (
+        <DateFilter filterBy={filterBy} handleChange={handleChange} />
+      )}
 
       {filterOptions.map(({ name, filterByKey, options }) => (
         <OptionBox

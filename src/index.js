@@ -3,13 +3,17 @@ import ReactDOM from "react-dom/client"
 import App from "./App"
 import reportWebVitals from "./reportWebVitals"
 import { QueryClient, QueryClientProvider } from "react-query"
+import { LocalizationProvider } from "@mui/x-date-pickers"
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
 
 const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <QueryClientProvider client={queryClient}>
-    <App />
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <App />
+    </LocalizationProvider>
   </QueryClientProvider>
 )
 

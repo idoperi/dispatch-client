@@ -39,7 +39,7 @@ export function OptionBox({
               value="clear"
               onChange={(ev) => {
                 setIsDisplay((prevIsDisplay) => !prevIsDisplay)
-                handleChange(filterByKey, "")
+                handleChange(filterByKey, ev.target.value)
               }}
               checked={filterBy[filterByKey] === ""}
             />

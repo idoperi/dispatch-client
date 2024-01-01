@@ -1,4 +1,5 @@
 import "./assets/scss/global.scss"
+
 import { Route, HashRouter as Router, Routes } from "react-router-dom"
 import { HomePage } from "./views/HomePage/HomePage"
 import { AppHeader } from "./cmps//AppHeader/AppHeader"

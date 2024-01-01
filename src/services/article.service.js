@@ -24,6 +24,11 @@ async function query(filterBy = { title: "" }) {
       `&sortBy=${filterBy.sortBy}` +
       `&page=${filterBy.pageNumber}` +
       `&apiKey=${API_KEY}`
+
+    if (filterBy.from) {
+      console.log("hi")
+      baseUrl += `&from=${filterBy.from}` + `&to=${filterBy.to}`
+    }
   } else if (filterBy.type === "top headlines") {
     baseUrl +=
       `top-headlines` +
@@ -40,17 +45,17 @@ async function query(filterBy = { title: "" }) {
     }
   }
 
-  // try {
-  //   const { data } = await axios.get(baseUrl)
-  //   const { articles, totalResults } = data
-  //   return { articles, totalResults }
-  // } catch (error) {
-  //   console.log("error: ", error)
-  // }
+  try {
+    const { data } = await axios.get(baseUrl)
+    const { articles, totalResults } = data
+    return { articles, totalResults }
+  } catch (error) {
+    console.log("error: ", error)
+  }
 
-  return new Promise((resolve) =>
-    setTimeout(() => resolve({ articles, totalResults: 10 }), 500)
-  )
+  // return new Promise((resolve) =>
+  //   setTimeout(() => resolve({ articles, totalResults: 10 }), 500)
+  // )
 }
 
 function getEmptyArticleFilterBy() {

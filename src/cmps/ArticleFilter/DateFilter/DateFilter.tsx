@@ -1,21 +1,30 @@
-import { DOMElement, ReactComponentElement, useState } from "react"
-import { Button, ModalForm, StyledDateFilter } from "./styles"
+import { useState } from "react"
+import {
+  Button,
+  ButtonClear,
+  Label,
+  ModalForm,
+  StyledDateFilter,
+} from "./styles"
 import date from "../../../assets/icons/date.svg"
+import { DatePicker } from "@mui/x-date-pickers"
+import dayjs from "dayjs"
+import { useQueryClient } from "react-query"
 
 interface DateFilterProps {
-  name: string
-  filterByKey: string
-  filterBy: object
-  handleChange: () => void
+  filterBy: any
+  handleChange: (target: string, val: string) => void
 }
 
-export function DateFilter({
-  name,
-  filterByKey,
-  filterBy,
-  handleChange,
-}: DateFilterProps) {
+export function DateFilter({ filterBy, handleChange }: DateFilterProps) {
   const [isDisplay, setIsDisplay] = useState(false)
+
+  const queryClient = useQueryClient()
+
+  function onClearDates(ev: React.MouseEvent<HTMLButtonElement>) {
+    ev.preventDefault()
+    queryClient.setQueryData("filterBy", { ...filterBy, from: "", to: "" })
+  }
 
   return (
     <StyledDateFilter>
@@ -27,7 +36,27 @@ export function DateFilter({
         <span>Dates</span>
         <img src={date} alt="" />
       </Button>
-      {isDisplay && <ModalForm></ModalForm>}
+      {isDisplay && (
+        <ModalForm>
+          <Label>From</Label>
+          <DatePicker
+            value={dayjs(filterBy.from, "YYYY-MM-DD")}
+            onChange={(newValue) => {
+              if (newValue === null) handleChange("from", "")
+              else handleChange("from", newValue.format("YYYY-MM-DD"))
+            }}
+          />
+          <Label>To</Label>
+          <DatePicker
+            value={dayjs(filterBy.to, "YYYY-MM-DD")}
+            onChange={(newValue) => {
+              if (newValue === null) handleChange("to", "")
+              else handleChange("to", newValue.format("YYYY-MM-DD"))
+            }}
+          />
+          <ButtonClear onClick={(ev) => onClearDates(ev)}>Clear</ButtonClear>
+        </ModalForm>
+      )}
     </StyledDateFilter>
   )
 }
