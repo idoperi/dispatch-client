@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react"
 import { articleService } from "../../services/article.service"
-import { ArticleList } from "../ArticleList"
+import { ArticleList } from "./ArticleList"
 import { useInfiniteQuery, useQuery, useQueryClient } from "react-query"
 import { GraphsContainer } from "../GraphsContainer/GraphsContainer"
 import { LandingTitle, ResultsLabel, StyledArticleIndex } from "./styles"

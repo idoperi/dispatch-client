@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { clr2, clr3, clr4, clr5 } from "../../../assets/style/setup/variables"
 
 export const StyledDateFilter = styled.div`
   position: relative;

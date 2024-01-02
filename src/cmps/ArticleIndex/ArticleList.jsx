@@ -1,9 +1,9 @@
 import { ArticlePreview } from "./ArticlePreview"
-import notFound from "../assets/icons/not-found.svg"
+import notFound from "../../assets/icons/not-found.svg"
 import {
   NoDataPlaceholder,
   Text,
-} from "../assets/style/cmps/NoDataPlaceholder.styled"
+} from "../../assets/style/cmps/NoDataPlaceholder.styled"
 
 export function ArticleList({ articles, onScroll }) {
   if (articles.length === 0) {

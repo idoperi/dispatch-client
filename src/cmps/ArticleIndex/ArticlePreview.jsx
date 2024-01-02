@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import moment from "moment"
-import arrow from "../assets/icons/arrow.svg"
-import { Button } from "../assets/style/cmps/Button.styled"
+import arrow from "../../assets/icons/arrow.svg"
+import { Button } from "../../assets/style/cmps/Button.styled"
 
 export function ArticlePreview({ article }) {
   function getDate() {

@@ -40,7 +40,7 @@ export function SourcesGraph({ articles }) {
   }
 
   const options = {
-    aspectRatio: 1, // Set the aspect ratio to 1 for a perfect circle, adjust as needed
+    aspectRatio: 1,
     plugins: {
       legend: {
         display: false,
