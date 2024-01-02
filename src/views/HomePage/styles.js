@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { Full } from "../../assets/style/layout/layout.styled"
 
 export const HomePageSection = styled.section`
   height: calc(100vh - 74px);

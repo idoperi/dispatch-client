@@ -5,7 +5,6 @@ import { HomePage } from "./views/HomePage/HomePage"
 import { AppHeader } from "./cmps//AppHeader/AppHeader"
 import { useQueryClient } from "react-query"
 import { articleService } from "./services/article.service"
-import { MainLayout } from "./assets/style/basics/layout.styled"
 import {
   Chart as ChartJS,
   ArcElement,
@@ -18,6 +17,7 @@ import {
   Title,
   Filler,
 } from "chart.js"
+import { MainContainer } from "./styles"
 ChartJS.register(
   ArcElement,
   Tooltip,
@@ -38,7 +38,7 @@ function App() {
   return (
     <Router>
       <AppHeader />
-      <MainLayout
+      <MainContainer
         onClick={() => {
           queryClient.setQueryData("isDisplaySearchModal", false)
         }}
@@ -48,7 +48,7 @@ function App() {
         </Routes>
 
         {/* <AppFooter/> */}
-      </MainLayout>
+      </MainContainer>
     </Router>
   )
 }
