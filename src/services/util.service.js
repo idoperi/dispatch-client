@@ -69,3 +69,5 @@ function generateColorsArray(maxLength) {
 
   return colors
 }
+
+// hi
