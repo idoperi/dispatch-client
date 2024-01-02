@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import moment from "moment"
-import arrow from "../assets/icons/arrow.svg"
+import arrow from "../../assets/icons/arrow.svg"
+import { Button } from "../../assets/style/cmps/Button.styled"
 
 export function ArticlePreview({ article }) {
   function getDate() {
@@ -17,10 +18,10 @@ export function ArticlePreview({ article }) {
         <p className="source-name">{article.source.name}</p>
         <p className="content">{article.content}</p>
         <Link className="link-dispatch" to={article.url}>
-          <button className="btn-primary btn-dispatch">
+          <Button $primary>
             <span>navigate to dispatch</span>
             <img src={arrow} alt="" />
-          </button>
+          </Button>
         </Link>
       </div>
 

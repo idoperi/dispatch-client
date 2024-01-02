@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
 import { articleService } from "../../services/article.service"
 import { useQuery, useQueryClient } from "react-query"
-import { OptionBox } from "../OptionBox/OptionBox.1"
+import { OptionBox } from "./OptionBox/OptionBox"
 import { FilterContainer } from "./styles"
+import { DateFilter } from "./DateFilter/DateFilter"
+import { StyledDateFilter } from "./DateFilter/styles"
 
 export function ArticleFilter() {
   const queryClient = useQueryClient()
@@ -31,6 +33,10 @@ export function ArticleFilter() {
 
   return (
     <FilterContainer>
+      {filterBy.type === "everything" && (
+        <DateFilter filterBy={filterBy} handleChange={handleChange} />
+      )}
+
       {filterOptions.map(({ name, filterByKey, options }) => (
         <OptionBox
           key={name}

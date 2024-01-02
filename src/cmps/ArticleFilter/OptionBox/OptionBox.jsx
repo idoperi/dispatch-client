@@ -5,7 +5,7 @@ import {
   ModalForm,
   RadioInputContainer,
 } from "./styles"
-import dropdown from "../../assets/icons/dropdown.svg"
+import dropdown from "../../../assets/icons/dropdown.svg"
 
 export function OptionBox({
   name,
@@ -39,7 +39,7 @@ export function OptionBox({
               value="clear"
               onChange={(ev) => {
                 setIsDisplay((prevIsDisplay) => !prevIsDisplay)
-                handleChange(filterByKey, "")
+                handleChange(filterByKey, ev.target.value)
               }}
               checked={filterBy[filterByKey] === ""}
             />

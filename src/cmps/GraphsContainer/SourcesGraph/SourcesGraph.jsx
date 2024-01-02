@@ -3,13 +3,14 @@ import { Doughnut } from "react-chartjs-2"
 import {
   DoughnutContainer,
   DoughnutTitle,
-  GraphContainer,
   LabelList,
   LabelPreview,
-  SeparateLine,
-  Title,
-  TopContainer,
 } from "./styles"
+import chart from "../../../assets/icons/chart.svg"
+import {
+  NoDataPlaceholder,
+  Text,
+} from "../../../assets/style/cmps/NoDataPlaceholder.styled"
 
 export function SourcesGraph({ articles }) {
   const sourceLabels = articles.map((article) => article.source.name)
@@ -39,7 +40,7 @@ export function SourcesGraph({ articles }) {
   }
 
   const options = {
-    aspectRatio: 1, // Set the aspect ratio to 1 for a perfect circle, adjust as needed
+    aspectRatio: 1,
     plugins: {
       legend: {
         display: false,
@@ -52,13 +53,17 @@ export function SourcesGraph({ articles }) {
     color: colors[index],
   }))
 
-  return (
-    <GraphContainer>
-      <TopContainer>
-        <Title>Sources</Title>
-        <SeparateLine />
-      </TopContainer>
+  if (articles.length === 0) {
+    return (
+      <NoDataPlaceholder size="sm">
+        <img src={chart} alt="" />
+        <Text>No data to display</Text>
+      </NoDataPlaceholder>
+    )
+  }
 
+  return (
+    <div>
       <DoughnutContainer>
         <Doughnut data={data} options={options} />
         <DoughnutTitle>Sum</DoughnutTitle>
@@ -73,6 +78,6 @@ export function SourcesGraph({ articles }) {
           </LabelPreview>
         ))}
       </LabelList>
-    </GraphContainer>
+    </div>
   )
 }

@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from "react-query"
-import { OptionBox } from "../../OptionBox/OptionBox"
+import { OptionBox } from "../../ArticleFilter/OptionBox/OptionBox"
 import {
   SearchBarContainer,
   SearchBtn,

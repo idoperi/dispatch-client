@@ -1,7 +1,7 @@
 import axios from "axios"
 import articles from "../assets/json/articles.json"
 
-const API_KEY = "2a619d7b07fd4278bd2f9012d6bd4787"
+const API_KEY = "7e8d1d6400a74a36b60bc01f5d01d28c"
 
 export const articleService = {
   query,
@@ -24,6 +24,11 @@ async function query(filterBy = { title: "" }) {
       `&sortBy=${filterBy.sortBy}` +
       `&page=${filterBy.pageNumber}` +
       `&apiKey=${API_KEY}`
+
+    if (filterBy.from) {
+      console.log("hi")
+      baseUrl += `&from=${filterBy.from}` + `&to=${filterBy.to}`
+    }
   } else if (filterBy.type === "top headlines") {
     baseUrl +=
       `top-headlines` +
@@ -42,18 +47,21 @@ async function query(filterBy = { title: "" }) {
 
   // try {
   //   const { data } = await axios.get(baseUrl)
-  //   const { articles } = data
-  //   return articles
+  //   const { articles, totalResults } = data
+  //   return { articles, totalResults }
   // } catch (error) {
   //   console.log("error: ", error)
+  //   return []
   // }
 
-  return new Promise((resolve) => setTimeout(() => resolve(articles), 500))
+  return new Promise((resolve) =>
+    setTimeout(() => resolve({ articles, totalResults: 10 }), 500)
+  )
 }
 
 function getEmptyArticleFilterBy() {
   return {
-    country: "us",
+    country: "il",
     category: "",
     sources: "",
     language: "",
@@ -61,6 +69,8 @@ function getEmptyArticleFilterBy() {
     q: "",
     sortBy: "",
     pageNumber: 1,
+    from: "",
+    to: "",
   }
 }
 
