@@ -7,9 +7,17 @@ export const Full = css`
 
 export const MainLayout = css`
   display: grid;
-  grid-template-columns: 1fr 1440px 1fr;
+  grid-template-columns: 20px 1fr 20px;
 
   & > * {
     grid-column: 2;
+  }
+
+  @media ${mq.min.xl} {
+    grid-template-columns: 1fr 1024px 1fr;
+  }
+
+  @media ${mq.min.xxl} {
+    grid-template-columns: 1fr 1440px 1fr;
   }
 `
