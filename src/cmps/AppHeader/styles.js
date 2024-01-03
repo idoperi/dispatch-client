@@ -11,16 +11,12 @@ export const HeaderContainer = styled.header`
 
   ${Logo} {
     height: calc(${appHeaderHeight} - 24px);
+    margin: 0 0 0 20px;
   }
 
   @media ${mq.max.xl} {
     display: flex;
     justify-content: space-between;
-
-    ${Logo} {
-      /* grid-column: 1; */
-      margin: 0 0 0 20px;
-    }
   }
 
   @media ${mq.min.xl} {
