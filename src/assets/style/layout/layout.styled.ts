@@ -13,6 +13,10 @@ export const MainLayout = css`
     grid-column: 2;
   }
 
+  & > .full {
+    grid-column: 1 / -1;
+  }
+
   @media ${mq.min.xl} {
     grid-template-columns: 1fr 1024px 1fr;
   }

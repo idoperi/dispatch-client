@@ -3,14 +3,16 @@ import { mq } from "../../assets/style/layout/mq.styled"
 
 export const StyledArticleIndex = styled.section`
   /* height: 100%; */
-  height: calc(100% - 93px);
+  /* height: calc(100% - 93px); */
 
   display: grid;
   grid-template-rows: auto 1fr;
 
+  overflow-y: hidden;
+
   @media ${mq.min.xxl} {
     grid-template-columns: 1014px 412px;
-    column-gap: 15px;
+    column-gap: 14px;
   }
 `
 

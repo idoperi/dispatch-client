@@ -30,7 +30,7 @@ $breakpoints: (
 );
 
 @mixin mq-max($key) {
-  $size: calc(map.get($breakpoints, $key) - 1px);
+  $size: map.get($breakpoints, $key);
 
   @media (max-width: $size) {
     @content;

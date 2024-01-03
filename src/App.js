@@ -34,6 +34,7 @@ function App() {
   const queryClient = useQueryClient()
   queryClient.setQueryData("filterBy", articleService.getEmptyArticleFilterBy())
   queryClient.setQueryData("isDisplaySearchModal", false)
+  queryClient.setQueryData("isDisplaySideFilter", false)
 
   return (
     <Router>
