@@ -2,6 +2,10 @@ import styled from "styled-components"
 
 export const StylesFilterDates = styled.div`
   background-color: #fff;
+
+  & > :not(:first-child) {
+    padding-bottom: 10px;
+  }
 `
 
 export const Title = styled.h3`

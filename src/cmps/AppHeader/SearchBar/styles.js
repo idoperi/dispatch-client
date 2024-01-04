@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { clr1, clr4 } from "../../../assets/style/setup/variables"
 import search from "../../../assets/icons/search.svg"
+import { mq } from "../../../assets/style/layout/mq.styled"
 
 export const SearchBarContainer = styled.div`
   display: flex;
@@ -58,4 +59,8 @@ export const SeparateLine = styled.div`
   height: 100%;
   background-color: ${clr4};
   opacity: 50%;
+
+  @media ${mq.max.xl} {
+    display: none;
+  }
 `

@@ -13,20 +13,23 @@ export function FilterTargets({ filterOptions, filterBy, setFilterTarget }) {
       <SideBarHeaderContainer>
         <Title>Filter</Title>
       </SideBarHeaderContainer>
-      {filterOptions.map((filterOption) => (
-        <OptionButton
-          key={filterOption.filterByKey}
-          onClick={() => setFilterTarget(filterOption.filterByKey)}
-        >
-          <Name>{filterOption.name}</Name>
-          <Value>
-            {getFilterTargetValue(
-              filterOption.options,
-              filterBy[filterOption.filterByKey]
-            )}
-          </Value>
-        </OptionButton>
-      ))}
+      {filterOptions.map((filterOption) => {
+        if (filterOption.filterByKey === "sortBy") return null
+        return (
+          <OptionButton
+            key={filterOption.filterByKey}
+            onClick={() => setFilterTarget(filterOption.filterByKey)}
+          >
+            <Name>{filterOption.name}</Name>
+            <Value>
+              {getFilterTargetValue(
+                filterOption.options,
+                filterBy[filterOption.filterByKey]
+              )}
+            </Value>
+          </OptionButton>
+        )
+      })}
       <OptionButton onClick={() => setFilterTarget("dates")}>
         <Name>Dates</Name>
         <Value></Value>

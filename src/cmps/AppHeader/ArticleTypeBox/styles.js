@@ -1,7 +1,12 @@
 import styled from "styled-components"
+import { mq } from "../../../assets/style/layout/mq.styled"
 
 export const TypeBox = styled.div`
   position: relative;
+
+  @media ${mq.max.xl} {
+    display: none;
+  }
 `
 
 export const Button = styled.button`
