@@ -22,7 +22,11 @@ export const LandingTitle = styled.h1`
   line-height: 32px;
   color: 262146;
   grid-column: 1 / -1;
-  padding: 20px 0;
+  padding: 12px 0;
+
+  @media ${mq.min.xl} {
+    padding: 20px 0;
+  }
 `
 
 export const ResultsLabel = styled.p`

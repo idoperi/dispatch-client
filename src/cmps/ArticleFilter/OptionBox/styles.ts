@@ -1,13 +1,13 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 export const StyledOptionBox = styled.div`
   position: relative;
 `
 
-export const Button = styled.button`
+export const Button = styled.button<{
+  $small?: boolean
+}>`
   border: none;
-  width: 175px;
-  padding: 15px;
   border-radius: 10px;
   background-color: #ffffff;
 
@@ -22,6 +22,18 @@ export const Button = styled.button`
     color: #5a5a89;
     text-transform: capitalize;
   }
+
+  ${({ $small }) =>
+    $small
+      ? css`
+          padding: 16px;
+          height: 100%;
+          gap: 8px;
+        `
+      : css`
+          padding: 15px;
+          width: 175px;
+        `}
 `
 
 export const ModalForm = styled.form`

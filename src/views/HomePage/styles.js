@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { Full, MainLayout } from "../../assets/style/layout/layout.styled"
+import { mq } from "../../assets/style/layout/mq.styled"
 
 export const HomePageSection = styled.section`
   ${MainLayout}
@@ -12,4 +13,8 @@ export const SeparateLine = styled.div`
   opacity: 0.5;
 
   border-bottom: 1px solid #d9dbe9;
+
+  @media ${mq.max.xl} {
+    display: none;
+  }
 `

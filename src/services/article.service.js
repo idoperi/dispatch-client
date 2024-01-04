@@ -11,6 +11,7 @@ export const articleService = {
 }
 
 async function query(filterBy = { title: "" }) {
+  console.log("filterBy: ", filterBy)
   // console.log("filterBy: ", filterBy)
   let baseUrl = "https://newsapi.org/v2/"
 
@@ -138,7 +139,7 @@ const sourcesOptions = [
   { id: "mako", name: "Mako" },
 ]
 
-const sortByOptions = [
+export const sortByOptions = [
   { id: "relevancy", name: "relevancy" },
   { id: "popularity", name: "popularity" },
   { id: "publishedAt", name: "published at" },

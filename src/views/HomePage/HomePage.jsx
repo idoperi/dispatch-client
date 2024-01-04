@@ -3,15 +3,15 @@ import { ArticleFilter } from "../../cmps/ArticleFilter/ArticleFilter"
 import { ArticleIndex } from "../../cmps/ArticleIndex/ArticleIndex"
 import { FilterHeader } from "../../cmps/FilterHeader/FilterHeader"
 import { GraphsContainer } from "../../cmps/GraphsContainer/GraphsContainer"
-import { SideFilter } from "../../cmps/SideFilter/SideFilter"
 import { HomePageSection, SeparateLine } from "./styles"
+import { SideBar } from "../../cmps/SideBar/SideBar"
 
 export function HomePage() {
   return (
     <HomePageSection>
       <FilterHeader />
 
-      <SideFilter />
+      <SideBar />
 
       <ArticleFilter />
 
