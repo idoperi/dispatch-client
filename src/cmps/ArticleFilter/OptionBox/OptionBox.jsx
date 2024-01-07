@@ -13,12 +13,14 @@ export function OptionBox({
   options,
   filterBy,
   handleChange,
+  isSmall = false,
 }) {
   const [isDisplay, setIsDisplay] = useState(false)
 
   return (
     <StyledOptionBox>
       <Button
+        $small={isSmall}
         onClick={() => {
           setIsDisplay((prevIsDisplay) => !prevIsDisplay)
         }}

@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { clr1, clr4 } from "../../../assets/style/setup/variables"
 import search from "../../../assets/icons/search.svg"
+import { mq } from "../../../assets/style/layout/mq.styled"
 
 export const SearchBarContainer = styled.div`
   display: flex;
@@ -35,9 +36,7 @@ export const SearchInput = styled.input`
   line-height: 22px;
   letter-spacing: 0.25px;
   border: none;
-  width: 208px;
-
-  /* transition: width 0.3s ease-out; */
+  width: 369px;
 
   &::placeholder {
     opacity: 50%;
@@ -45,11 +44,14 @@ export const SearchInput = styled.input`
 
   &:focus-visible {
     outline: none;
-    /* width: 475px; */
 
     &::placeholder {
       color: transparent;
     }
+  }
+
+  @media ${mq.min.xl} {
+    width: 206px;
   }
 `
 
@@ -58,4 +60,8 @@ export const SeparateLine = styled.div`
   height: 100%;
   background-color: ${clr4};
   opacity: 50%;
+
+  @media ${mq.max.xl} {
+    display: none;
+  }
 `

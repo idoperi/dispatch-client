@@ -22,9 +22,6 @@ export function SearchBar() {
 
   const [searchValue, setSearchValue] = useState("")
   const [recentSearches, setRecentSearches] = useState([])
-  // const [isDisplayModal, setIsDisplayModal] = useState(false)
-
-  // useEffect(() => {}, [recentSearches])
 
   function handleChange(target, val) {
     queryClient.setQueryData("filterBy", { ...filterBy, [target]: val })
