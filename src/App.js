@@ -18,6 +18,7 @@ import {
   Title,
   Filler,
 } from "chart.js"
+import { LoginPage } from "./views/LoginPage/LoginPage"
 ChartJS.register(
   ArcElement,
   Tooltip,
@@ -44,7 +45,8 @@ function App() {
         }}
       >
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/feed" element={<HomePage />} />
         </Routes>
 
         {/* <AppFooter/> */}
