@@ -1,12 +1,11 @@
 .article-preview {
   display: grid;
-  grid-template-columns: em(244px) 1fr;
-  height: em(242px);
+  height: em(450px);
   background-color: $clr-1;
   border: 1px solid $clr-4;
   border-radius: em(20px);
   box-shadow: 0px em(32px) em(64px) 0px #0000000d;
-  margin: 0 16px 0 0;
+  margin: 0 14px 0 0;
 
   .img {
     height: 100%;
@@ -52,9 +51,33 @@
       text-align: left;
       color: $clr-6;
     }
+  }
 
-    .link-dispatch {
-      align-self: flex-end;
+  @include mq-max(md) {
+    grid-template-rows: 150px 1fr;
+    max-width: 450px;
+    justify-self: center;
+
+    .img {
+      border-radius: em(20px) em(20px) 0 0;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  @include mq(md) {
+    grid-template-columns: em(244px) 1fr;
+    height: em(242px);
+
+    .img {
+      border-radius: em(20px) 0 0 em(20px);
+      object-fit: cover;
+    }
+
+    .info-container {
+      .link-dispatch {
+        align-self: flex-end;
+      }
     }
   }
 }
