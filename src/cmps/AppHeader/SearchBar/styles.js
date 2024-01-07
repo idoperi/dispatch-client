@@ -4,14 +4,18 @@ import search from "../../../assets/icons/search.svg"
 import { mq } from "../../../assets/style/layout/mq.styled"
 
 export const SearchBarContainer = styled.div`
-  display: flex;
-  align-items: center;
-  position: relative;
+  display: none;
 
-  background-color: ${clr1};
-  border-radius: 10px;
-  width: max-content;
-  padding: 5px 0;
+  @media ${mq.min.md} {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    background-color: ${clr1};
+    border-radius: 10px;
+    width: max-content;
+    padding: 5px 0;
+  }
 `
 
 export const SearchForm = styled.form`

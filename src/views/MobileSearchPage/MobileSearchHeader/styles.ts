@@ -10,6 +10,15 @@ export const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   gap: 10px;
+
+  a {
+    display: flex;
+    align-items: center;
+  }
+
+  form {
+    flex-grow: 1;
+  }
 `
 
 export const SearchInput = styled.input`
@@ -19,6 +28,7 @@ export const SearchInput = styled.input`
   letter-spacing: 0.25px;
   border: none;
   padding: 8px;
+  width: 100%;
 
   &::placeholder {
     opacity: 50%;

@@ -2,8 +2,10 @@ import { useQuery, useQueryClient } from "react-query"
 import { ArticleIndex } from "../../cmps/ArticleIndex/ArticleIndex"
 import { MobileRecentSearches } from "./MobileRecentSearches/MobileRecentSearches"
 import { MobileSearchHeader } from "./MobileSearchHeader/MobileSearchHeader"
-import { StyledMobileSearch } from "./styles"
+import { FeedContainer, StyledMobileSearch } from "./styles"
 import { useState } from "react"
+import { FilterHeader } from "../../cmps/FilterHeader/FilterHeader"
+import { SideBar } from "../../cmps/SideBar/SideBar"
 
 export function MobileSearch() {
   const queryClient = useQueryClient()
@@ -50,13 +52,21 @@ export function MobileSearch() {
         setSearchValue={setSearchValue}
       />
 
-      {true && (
+      {false ? (
         <MobileRecentSearches
           recentSearches={recentSearches}
           onRecentSearchClicked={onRecentSearchClicked}
           onRemoveRecentSearch={onRemoveRecentSearch}
           onClearRecentSearches={onClearRecentSearches}
         />
+      ) : (
+        <FeedContainer>
+          <FilterHeader />
+
+          <SideBar />
+
+          <ArticleIndex />
+        </FeedContainer>
       )}
     </StyledMobileSearch>
   )

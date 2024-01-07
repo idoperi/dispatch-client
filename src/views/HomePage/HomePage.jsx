@@ -5,19 +5,23 @@ import { FilterHeader } from "../../cmps/FilterHeader/FilterHeader"
 import { GraphsContainer } from "../../cmps/GraphsContainer/GraphsContainer"
 import { HomePageSection, SeparateLine } from "./styles"
 import { SideBar } from "../../cmps/SideBar/SideBar"
+import { AppHeader } from "../../cmps/AppHeader/AppHeader"
 
 export function HomePage() {
   return (
-    <HomePageSection>
-      <FilterHeader />
+    <>
+      <AppHeader />
+      <HomePageSection>
+        <FilterHeader />
 
-      <SideBar />
+        <SideBar />
 
-      <ArticleFilter />
+        <ArticleFilter />
 
-      <SeparateLine />
+        <SeparateLine />
 
-      <ArticleIndex />
-    </HomePageSection>
+        <ArticleIndex />
+      </HomePageSection>
+    </>
   )
 }

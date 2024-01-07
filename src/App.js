@@ -39,7 +39,6 @@ function App() {
 
   return (
     <Router>
-      <AppHeader />
       <MainContainer
         onClick={() => {
           queryClient.setQueryData("isDisplaySearchModal", false)
