@@ -18,6 +18,7 @@ import {
   Title,
   Filler,
 } from "chart.js"
+import { MobileSearch } from "./views/MobileSearchPage/MobileSearchPage"
 ChartJS.register(
   ArcElement,
   Tooltip,
@@ -37,7 +38,7 @@ function App() {
 
   return (
     <Router>
-      <AppHeader />
+      {/* <AppHeader /> */}
       <MainLayout
         onClick={() => {
           queryClient.setQueryData("isDisplaySearchModal", false)
@@ -45,6 +46,7 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/search" element={<MobileSearch />} />
         </Routes>
 
         {/* <AppFooter/> */}
