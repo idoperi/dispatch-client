@@ -36,9 +36,7 @@ export const SearchInput = styled.input`
   line-height: 22px;
   letter-spacing: 0.25px;
   border: none;
-  width: 208px;
-
-  /* transition: width 0.3s ease-out; */
+  width: 369px;
 
   &::placeholder {
     opacity: 50%;
@@ -46,11 +44,14 @@ export const SearchInput = styled.input`
 
   &:focus-visible {
     outline: none;
-    /* width: 475px; */
 
     &::placeholder {
       color: transparent;
     }
+  }
+
+  @media ${mq.min.xl} {
+    width: 206px;
   }
 `
 
