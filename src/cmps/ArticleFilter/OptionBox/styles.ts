@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components"
+import { clr6 } from "../../../assets/style/setup/variables"
 
 export const StyledOptionBox = styled.div`
   position: relative;
@@ -19,7 +20,7 @@ export const Button = styled.button<{
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 0.25px;
-    color: #5a5a89;
+    color: ${clr6};
     text-transform: capitalize;
   }
 
@@ -54,7 +55,7 @@ export const ModalForm = styled.form`
   }
 
   &::-webkit-scrollbar-thumb:vertical {
-    background-color: #5a5a89;
+    background-color: ${clr6};
   }
 `
 
@@ -66,7 +67,7 @@ export const RadioInputContainer = styled.div`
   label {
     div {
       height: 28px;
-      color: #5a5a89;
+      color: ${clr6};
       text-transform: capitalize;
       font-family: Mulish;
       font-size: 12px;

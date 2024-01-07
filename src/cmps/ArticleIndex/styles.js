@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { mq } from "../../assets/style/layout/mq.styled"
+import { clr6 } from "../../assets/style/setup/variables"
 
 export const StyledArticleIndex = styled.section`
   /* height: 100%; */
@@ -33,7 +34,7 @@ export const ResultsLabel = styled.p`
   font-size: 14px;
   line-height: 22px;
   letter-spacing: 0.25px;
-  color: #5a5a89;
+  color: ${clr6};
   opacity: 0.5;
   grid-column: 1 / -1;
   padding: 8px 0 15px 0;

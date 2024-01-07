@@ -1,11 +1,12 @@
 import styled from "styled-components"
+import { clr6, clr9 } from "../../../assets/style/setup/variables"
 
 export const StyledFilterTargets = styled.div`
   background-color: #fff;
 `
 
 export const Title = styled.h2`
-  color: #5a5a89;
+  color: ${clr6};
   font-size: 16px;
   font-weight: 500;
   line-height: 22px; /* 137.5% */
@@ -24,18 +25,18 @@ export const OptionButton = styled.button`
 `
 
 export const Name = styled.p`
-  color: #5a5a89;
+  color: ${clr6};
   font-size: 14px;
   font-weight: 400;
-  line-height: 22px; /* 157.143% */
+  line-height: 22px;
   letter-spacing: 0.25px;
   text-transform: capitalize;
 `
 
 export const Value = styled.p`
-  color: rgba(90, 90, 137, 0.5);
+  color: ${clr9};
   font-size: 14px;
   font-weight: 400;
-  line-height: 22px; /* 157.143% */
+  line-height: 22px;
   letter-spacing: 0.25px;
 `

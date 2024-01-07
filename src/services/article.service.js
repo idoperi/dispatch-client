@@ -11,8 +11,6 @@ export const articleService = {
 }
 
 async function query(filterBy = { title: "" }) {
-  console.log("filterBy: ", filterBy)
-  // console.log("filterBy: ", filterBy)
   let baseUrl = "https://newsapi.org/v2/"
 
   if (filterBy.type === "everything") {

@@ -19,14 +19,6 @@ export const mq = {
     xl: `(min-width: ${size.xl})`,
     xxl: `(min-width: ${size.xxl})`,
   },
-  // max: {
-  //   xs: `(max-width: ${size.xs})`,
-  //   sm: `(max-width: ${size.sm})`,
-  //   md: `(max-width: ${size.md})`,
-  //   lg: `(max-width: ${size.lg})`,
-  //   xl: `(max-width: ${size.xl})`,
-  //   xxl: `(max-width: ${size.xxl})`,
-  // },
   max: {
     xs: `(max-width: calc(${size.xs} - 1px))`,
     sm: `(max-width: calc(${size.sm} - 1px))`,

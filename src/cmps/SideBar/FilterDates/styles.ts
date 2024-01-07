@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { clr6 } from "../../../assets/style/setup/variables"
 
 export const StylesFilterDates = styled.div`
   background-color: #fff;
@@ -9,7 +10,7 @@ export const StylesFilterDates = styled.div`
 `
 
 export const Title = styled.h3`
-  color: #5a5a89;
+  color: ${clr6};
   font-size: 14px;
   font-weight: 500;
   line-height: 22px;
@@ -26,9 +27,9 @@ export const BackButton = styled.button`
 
 export const Label = styled.p`
   height: 44px;
-  color: #5a5a89;
+  color: ${clr6};
   font-size: 14px;
-  line-height: 22px; /* 157.143% */
+  line-height: 22px;
   letter-spacing: 0.25px;
   display: flex;
   align-items: center;
