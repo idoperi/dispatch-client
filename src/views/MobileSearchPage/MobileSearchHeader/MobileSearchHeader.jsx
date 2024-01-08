@@ -1,10 +1,19 @@
-import { SearchInput, StyledHeader } from "./styles"
+import { SearchInput, StyledHeader, TransparentButton } from "./styles"
 import backSvg from "../../../assets/icons/back.svg"
+import searchSvg from "../../../assets/icons/search.svg"
+import { ReactComponent as SearchSvg } from "../../../assets/icons/search.svg"
+import exitSvg from "../../../assets/icons/exit.svg"
 import { useEffect, useRef } from "react"
-import { useQuery, useQueryClient } from "react-query"
-import { NavLink } from "react-router-dom"
 
-export function MobileSearchHeader({ onSearch, searchValue, setSearchValue }) {
+export function MobileSearchHeader({
+  onSearch,
+  searchValue,
+  setSearchValue,
+  onFocus,
+  onBack,
+  isDisplayFeed,
+  onExitSearch,
+}) {
   const inputRef = useRef()
 
   useEffect(() => {
@@ -12,21 +21,43 @@ export function MobileSearchHeader({ onSearch, searchValue, setSearchValue }) {
     return () => {}
   }, [])
 
+  function handleSubmit(ev) {
+    ev.preventDefault()
+    inputRef.current.blur()
+    onSearch()
+  }
+
+  function getDecoratedValue() {
+    return isDisplayFeed ? `“${searchValue}”` : searchValue
+  }
+
   return (
     <StyledHeader>
-      <NavLink to="/">
+      <TransparentButton onClick={onBack}>
         <img src={backSvg} alt="" />
-      </NavLink>
+      </TransparentButton>
 
-      <form onSubmit={onSearch} autoComplete="off">
+      <form onSubmit={handleSubmit} autoComplete="off">
         <SearchInput
           placeholder="Search"
           id="search"
-          value={searchValue}
+          value={getDecoratedValue()}
           onInput={(ev) => setSearchValue(ev.target.value)}
           ref={inputRef}
+          onFocus={onFocus}
+          decorated={isDisplayFeed}
         />
       </form>
+
+      {isDisplayFeed ? (
+        <TransparentButton onClick={() => inputRef.current.focus()}>
+          <SearchSvg />
+        </TransparentButton>
+      ) : (
+        <TransparentButton onClick={onExitSearch}>
+          <img className="exit-svg" src={exitSvg} alt="" />
+        </TransparentButton>
+      )}
     </StyledHeader>
   )
 }

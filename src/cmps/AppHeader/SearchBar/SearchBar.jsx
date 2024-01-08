@@ -19,9 +19,12 @@ export function SearchBar() {
   const { data: isDisplaySearchModal } = useQuery("isDisplaySearchModal", () =>
     queryClient.getQueryData("isDisplaySearchModal")
   )
+  const { data: recentSearches } = useQuery("recentSearches", () =>
+    queryClient.getQueryData("recentSearches")
+  )
 
   const [searchValue, setSearchValue] = useState("")
-  const [recentSearches, setRecentSearches] = useState([])
+  // const [recentSearches, setRecentSearches] = useState([])
 
   function handleChange(target, val) {
     queryClient.setQueryData("filterBy", { ...filterBy, [target]: val })
@@ -38,10 +41,8 @@ export function SearchBar() {
     queryClient.setQueryData("filterBy", { ...filterBy, q: searchValue })
 
     if (!searchValue) return
-    setRecentSearches((prevRecentSearches) => [
-      searchValue,
-      ...prevRecentSearches,
-    ])
+    if (recentSearches.includes(searchValue)) return
+    queryClient.setQueryData("recentSearches", [searchValue, ...recentSearches])
   }
 
   function onRecentSearchClicked(recentSearch) {
@@ -51,15 +52,13 @@ export function SearchBar() {
   }
 
   function onRemoveRecentSearch(idx) {
-    setRecentSearches((prevRecentSearches) => {
-      const updatedSearches = [...prevRecentSearches]
-      updatedSearches.splice(idx, 1)
-      return updatedSearches
-    })
+    const updatedSearches = [...recentSearches]
+    updatedSearches.splice(idx, 1)
+    queryClient.setQueryData("recentSearches", [...updatedSearches])
   }
 
   function onClearRecentSearches() {
-    setRecentSearches([])
+    queryClient.setQueryData("recentSearches", [])
   }
 
   return (

@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 export const StyledHeader = styled.header`
   height: 74px;
@@ -19,9 +19,21 @@ export const StyledHeader = styled.header`
   form {
     flex-grow: 1;
   }
+
+  .exit-svg {
+    width: 15px;
+  }
 `
 
-export const SearchInput = styled.input`
+export const TransparentButton = styled.button`
+  border: none;
+  background-color: transparent;
+  padding: 0;
+`
+
+export const SearchInput = styled.input<{
+  decorated?: boolean
+}>`
   color: rgba(90, 90, 137, 0.5);
   font-size: 14px;
   line-height: 22px;
@@ -42,4 +54,6 @@ export const SearchInput = styled.input`
       color: transparent;
     }
   }
+
+  text-transform: ${({ decorated }) => (decorated ? "uppercase" : "none")};
 `
