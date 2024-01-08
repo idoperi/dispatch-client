@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { mq } from "../../assets/style/layout/mq.styled"
 
 export const StyledLoginPage = styled.section`
   grid-column: 1 / -1;
@@ -8,7 +9,15 @@ export const StyledLoginPage = styled.section`
   background-color: #f8f8ff;
 
   display: grid;
-  grid-template-columns: 4fr 6fr;
+  grid-template-rows: 250px 1fr;
+
+  @media ${mq.min.md} {
+    grid-template-rows: 365px 1fr;
+  }
+  @media ${mq.min.xl} {
+    grid-template-rows: unset;
+    grid-template-columns: 4fr 6fr;
+  }
 `
 
 export const HeroSection = styled.section`
@@ -18,32 +27,73 @@ export const HeroSection = styled.section`
   justify-content: center;
 
   img {
-    height: 278px;
+    height: 128px;
+  }
+
+  @media ${mq.min.md} {
+    img {
+      height: 178px;
+    }
+  }
+  @media ${mq.min.xxl} {
+    img {
+      height: 278px;
+    }
   }
 `
 
 export const WelcomeContainer = styled.div`
-  width: 715px;
-  margin: 0 0 0 60px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  margin: 20px;
+  text-align: center;
   gap: 24px;
+
+  @media ${mq.min.xl} {
+    justify-content: center;
+    margin: 0 0 0 60px;
+    width: 650px;
+  }
+  @media ${mq.min.xxl} {
+    width: 715px;
+  }
 `
+
 export const Title = styled.h1`
   color: #5a5a89;
-  font-size: 48px;
   font-weight: 300;
-  line-height: 22px; /* 45.833% */
+  line-height: 22px;
   letter-spacing: 0.25px;
+  font-size: 32px;
+
+  @media ${mq.max.xl} {
+    margin: 28px 0 0 0;
+  }
+  @media ${mq.min.md} {
+    font-size: 42px;
+  }
+  @media ${mq.min.xxl} {
+    font-size: 48px;
+  }
 `
+
 export const Text = styled.p`
   color: #5a5a89;
-  font-size: 36px;
+  font-size: 22px;
   font-weight: 100;
   line-height: 50px; /* 138.889% */
   letter-spacing: 0.25px;
-  padding-bottom: 0cap;
+  padding-bottom: 0px;
+
+  @media ${mq.max.xl} {
+    flex-grow: 1;
+  }
+  @media ${mq.min.md} {
+    font-size: 32px;
+  }
+  @media ${mq.min.xxl} {
+    font-size: 36px;
+  }
 `
 
 export const SeparateLine = styled.div`
