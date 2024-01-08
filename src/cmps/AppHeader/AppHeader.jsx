@@ -4,9 +4,10 @@ import { SearchBar } from "./SearchBar/SearchBar"
 
 export function AppHeader() {
   return (
-    <HeaderContainer className="full main-layout">
+    <HeaderContainer>
       <Logo src={logo} />
       <SearchBar />
+      <div></div>
     </HeaderContainer>
   )
 }

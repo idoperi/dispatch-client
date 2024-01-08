@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { clr1, clr5, clr5Hover } from "../setup/variables"
+import { mq } from "../layout/mq.styled"
 
 export const Button = styled.button<{
   $primary?: boolean
@@ -30,5 +31,10 @@ export const Button = styled.button<{
 
   &:hover {
     opacity: 0.8;
+  }
+
+  @media ${mq.max.md} {
+    width: 100%;
+    justify-content: space-evenly;
   }
 `
