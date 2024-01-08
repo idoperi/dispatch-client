@@ -158,4 +158,5 @@ const languageOptions = [
   { id: "en", name: "en" },
   { id: "fr", name: "fr" },
   { id: "es", name: "es" },
+  { id: "jp", name: "jp" },
 ]

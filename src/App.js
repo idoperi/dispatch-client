@@ -2,7 +2,7 @@ import "./assets/scss/global.scss"
 
 import { Route, HashRouter as Router, Routes } from "react-router-dom"
 import { HomePage } from "./views/HomePage/HomePage"
-import { AppHeader } from "./cmps//AppHeader/AppHeader"
+import { AppHeader } from "./cmps/AppHeader/AppHeader"
 import { useQueryClient } from "react-query"
 import { articleService } from "./services/article.service"
 import {
@@ -39,7 +39,7 @@ function App() {
 
   return (
     <Router>
-      {/* <AppHeader /> */}
+      <AppHeader />
       <MainContainer
         onClick={() => {
           queryClient.setQueryData("isDisplaySearchModal", false)
