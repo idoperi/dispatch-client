@@ -7,18 +7,20 @@ import {
 } from "./styles"
 import backIcon from "../../../assets/icons/back.svg"
 
-export function FilterTargetOptions({
+export const FilterTargetOptions = ({
   targetOptions,
-  setFilterTarget,
   filterBy,
   handleChange,
-}) {
+  setRenderType,
+}) => {
+  if (!targetOptions) return <div>Loading...</div>
+
   const { name, filterByKey, options } = targetOptions
 
   return (
     <StyledFilterTargetOptions>
       <SideBarHeaderContainer>
-        <BackButton onClick={() => setFilterTarget("")}>
+        <BackButton onClick={() => setRenderType("targets")}>
           <img src={backIcon} alt="" />
         </BackButton>
         <Title>{name}</Title>
@@ -33,7 +35,7 @@ export function FilterTargetOptions({
             value="all"
             onChange={(ev) => {
               handleChange(filterByKey, "")
-              setFilterTarget("")
+              setRenderType("targets")
             }}
             checked={filterBy[filterByKey] === ""}
           />
@@ -51,7 +53,7 @@ export function FilterTargetOptions({
             value={id}
             onChange={(ev) => {
               handleChange(filterByKey, ev.currentTarget.value)
-              setFilterTarget("")
+              setRenderType("targets")
             }}
             checked={filterBy[filterByKey] === id}
           />

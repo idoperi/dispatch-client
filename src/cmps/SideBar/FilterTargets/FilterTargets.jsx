@@ -1,8 +1,13 @@
 import { SideBarHeaderContainer } from "../styles"
 import { Name, OptionButton, StyledFilterTargets, Title, Value } from "./styles"
 
-export function FilterTargets({ filterOptions, filterBy, setFilterTarget }) {
-  function getFilterTargetValue(options, id) {
+export const FilterTargets = ({
+  filterOptions,
+  filterBy,
+  setFilterTarget,
+  setRenderType,
+}) => {
+  const getFilterTargetValue = (options, id) => {
     if (!id) return "All"
     const { name } = options.find((option) => option.id === id)
     return name
@@ -18,7 +23,10 @@ export function FilterTargets({ filterOptions, filterBy, setFilterTarget }) {
         return (
           <OptionButton
             key={filterOption.filterByKey}
-            onClick={() => setFilterTarget(filterOption.filterByKey)}
+            onClick={() => {
+              setFilterTarget(filterOption.filterByKey)
+              setRenderType("options")
+            }}
           >
             <Name>{filterOption.name}</Name>
             <Value>
@@ -30,7 +38,7 @@ export function FilterTargets({ filterOptions, filterBy, setFilterTarget }) {
           </OptionButton>
         )
       })}
-      <OptionButton onClick={() => setFilterTarget("dates")}>
+      <OptionButton onClick={() => setRenderType("dates")}>
         <Name>Dates</Name>
         <Value></Value>
       </OptionButton>

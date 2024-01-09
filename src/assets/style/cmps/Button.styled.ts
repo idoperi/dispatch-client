@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { clr1, clr5, clr5Hover } from "../setup/variables"
+import { clr1, clr5, clr5Hover, clr6 } from "../setup/variables"
 import { mq } from "../layout/mq.styled"
 
 export const Button = styled.button<{
@@ -16,12 +16,11 @@ export const Button = styled.button<{
     else return "#ffffff"
   }};
 
-  color: ${({ $primary }) => ($primary ? "#ffffff" : "#5A5A89")};
+  color: ${({ $primary }) => ($primary ? "#ffffff" : clr6)};
 
   height: 36px;
   padding: 0px 20px;
   border-radius: 2em;
-  /* color: ${clr1}; */
   font-size: 14px;
   font-weight: 500;
   line-height: 26px;

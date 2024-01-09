@@ -16,9 +16,10 @@ const typeOptions = {
   ],
 }
 
-export function SideBar() {
+export const SideBar = () => {
   const [filterTarget, setFilterTarget] = useState("")
   const [filterOptions, setFilterOptions] = useState([])
+  const [renderType, setRenderType] = useState("targets")
 
   const queryClient = useQueryClient()
 
@@ -51,7 +52,7 @@ export function SideBar() {
     }
   }, [localFilterBy.type])
 
-  function handleLocalFilterChange(target, val) {
+  const handleLocalFilterChange = (target, val) => {
     setLocalFilterBy((prevLocalFilterBy) => ({
       ...prevLocalFilterBy,
       [target]: val,
@@ -62,48 +63,52 @@ export function SideBar() {
     queryClient.getQueryData("isDisplaySideFilter")
   )
 
-  function onCloseSideBar() {
+  const onCloseSideBar = () => {
     queryClient.setQueryData("isDisplaySideFilter", false)
   }
 
-  function getTargetOptions() {
+  const getTargetOptions = () => {
     return filterOptions.find(
       (filterOption) => filterOption.filterByKey === filterTarget
     )
   }
 
-  function onSaveFilter() {
+  const onSaveFilter = () => {
     queryClient.setQueryData("filterBy", { ...localFilterBy })
     onCloseSideBar()
+  }
+
+  const renderSidebarOption = {
+    targets: (
+      <FilterTargets
+        filterOptions={filterOptions}
+        filterBy={localFilterBy}
+        setFilterTarget={setFilterTarget}
+        setRenderType={setRenderType}
+      />
+    ),
+    options: (
+      <FilterTargetOptions
+        filterBy={localFilterBy}
+        targetOptions={getTargetOptions()}
+        handleChange={handleLocalFilterChange}
+        setRenderType={setRenderType}
+      />
+    ),
+    dates: (
+      <FilterDates
+        filterBy={localFilterBy}
+        handleChange={handleLocalFilterChange}
+        setRenderType={setRenderType}
+      />
+    ),
   }
 
   return (
     <StyledSideBar open={isDisplaySideFilter} onClick={onCloseSideBar}>
       <Backdrop />
       <Container onClick={(ev) => ev.stopPropagation()}>
-        {filterTarget ? (
-          filterTarget === "dates" ? (
-            <FilterDates
-              filterBy={localFilterBy}
-              setFilterTarget={setFilterTarget}
-              handleChange={handleLocalFilterChange}
-            />
-          ) : (
-            <FilterTargetOptions
-              filterBy={localFilterBy}
-              targetOptions={getTargetOptions()}
-              setFilterTarget={setFilterTarget}
-              handleChange={handleLocalFilterChange}
-            />
-          )
-        ) : (
-          <FilterTargets
-            filterOptions={filterOptions}
-            filterBy={localFilterBy}
-            setFilterTarget={setFilterTarget}
-          />
-        )}
-
+        {renderSidebarOption[renderType]}
         <ButtonBottom onClick={onSaveFilter}>View results</ButtonBottom>
       </Container>
     </StyledSideBar>

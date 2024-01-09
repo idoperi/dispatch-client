@@ -4,11 +4,11 @@ import { SideBarHeaderContainer } from "../styles"
 import { DatePicker } from "@mui/x-date-pickers"
 import dayjs from "dayjs"
 
-export function FilterDates({ setFilterTarget, filterBy, handleChange }) {
+export const FilterDates = ({ filterBy, handleChange, setRenderType }) => {
   return (
     <StylesFilterDates>
       <SideBarHeaderContainer>
-        <BackButton onClick={() => setFilterTarget("")}>
+        <BackButton onClick={() => setRenderType("targets")}>
           <img src={backIcon} alt="" />
         </BackButton>
         <Title>Dates</Title>

@@ -2,21 +2,21 @@ import {
   ButtonClear,
   ButtonRemove,
   LowerSection,
-  Modal,
   RecentSearchLine,
+  StyledRecentSearches,
   Text,
   Title,
   UpperSection,
 } from "./styles"
 
-export const RecentSearchesModal = ({
+export const MobileRecentSearches = ({
   recentSearches,
   onRecentSearchClicked,
   onRemoveRecentSearch,
   onClearRecentSearches,
 }) => {
   return (
-    <Modal>
+    <StyledRecentSearches>
       <UpperSection>
         <Title>recent searches</Title>
         <ButtonClear onClick={onClearRecentSearches}>clear</ButtonClear>
@@ -32,6 +32,6 @@ export const RecentSearchesModal = ({
           </RecentSearchLine>
         ))}
       </LowerSection>
-    </Modal>
+    </StyledRecentSearches>
   )
 }

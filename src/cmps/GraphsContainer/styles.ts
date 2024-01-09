@@ -6,6 +6,9 @@ export const ContainerLayout = styled.section`
   flex-direction: column;
   gap: 30px;
 
+  height: 100%;
+  overflow-y: auto;
+
   @media ${mq.max.xxl} {
     display: none;
   }

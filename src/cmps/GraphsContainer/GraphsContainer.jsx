@@ -3,7 +3,7 @@ import { GraphContainer } from "./GraphContainer/GraphContainer"
 import { SourcesGraph } from "./SourcesGraph/SourcesGraph"
 import { ContainerLayout } from "./styles"
 
-export function GraphsContainer({ articles }) {
+export const GraphsContainer = ({ articles }) => {
   return (
     <ContainerLayout>
       <GraphContainer title="Dates">

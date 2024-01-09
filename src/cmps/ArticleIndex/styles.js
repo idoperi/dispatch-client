@@ -1,11 +1,9 @@
 import styled from "styled-components"
 import { mq } from "../../assets/style/layout/mq.styled"
 import { clr6 } from "../../assets/style/setup/variables"
+import { em } from "../../assets/style/setup/functions.styled"
 
 export const StyledArticleIndex = styled.section`
-  /* height: 100%; */
-  /* height: calc(100% - 93px); */
-
   display: grid;
   grid-template-rows: auto 1fr;
 
@@ -13,7 +11,8 @@ export const StyledArticleIndex = styled.section`
 
   @media ${mq.min.xxl} {
     grid-template-columns: 1014px 412px;
-    column-gap: 14px;
+    /* column-gap: 14px; */
+    column-gap: ${em(14)};
   }
 `
 
