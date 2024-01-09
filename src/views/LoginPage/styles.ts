@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { mq } from "../../assets/style/layout/mq.styled"
+import { clr6 } from "../../assets/style/setup/variables"
 
 export const StyledLoginPage = styled.section`
   grid-column: 1 / -1;
@@ -60,7 +61,7 @@ export const WelcomeContainer = styled.div`
 `
 
 export const Title = styled.h1`
-  color: #5a5a89;
+  color: ${clr6};
   font-weight: 300;
   line-height: 22px;
   letter-spacing: 0.25px;
@@ -78,7 +79,7 @@ export const Title = styled.h1`
 `
 
 export const Text = styled.p`
-  color: #5a5a89;
+  color: ${clr6};
   font-size: 22px;
   font-weight: 100;
   line-height: 50px; /* 138.889% */
