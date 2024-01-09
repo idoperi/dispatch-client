@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 
-export function useEffectUpdate(cb, dependencies) {
+export const useEffectUpdate = (cb, dependencies) => {
   const isFirstRender = useRef(true)
 
   useEffect(() => {

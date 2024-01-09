@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { clr1 } from "../../../assets/style/setup/variables"
+import { clr1, clr6 } from "../../../assets/style/setup/variables"
 
 export const StyledGraphContainer = styled.div`
   background-color: ${clr1};
@@ -22,5 +22,5 @@ export const SeparateLine = styled.div`
   width: 20px;
   height: 4px;
   border-radius: 2em;
-  background-color: #5a5a89;
+  background-color: ${clr6};
 `

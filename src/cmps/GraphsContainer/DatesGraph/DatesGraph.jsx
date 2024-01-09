@@ -1,8 +1,7 @@
 import { useRef } from "react"
 import { Line } from "react-chartjs-2"
 
-export function DatesGraph({ articles }) {
-  // Extracting unique month names from publishedAt dates in articles
+export const DatesGraph = ({ articles }) => {
   const uniqueMonths = Array.from(
     new Set(
       articles.map((article) =>
@@ -13,7 +12,6 @@ export function DatesGraph({ articles }) {
     )
   )
 
-  // Sorting unique months in chronological order
   const sortedMonths = uniqueMonths.sort((a, b) => {
     const monthToIndex = {
       Jan: 0,
@@ -32,7 +30,6 @@ export function DatesGraph({ articles }) {
     return monthToIndex[a] - monthToIndex[b]
   })
 
-  // Counting the number of articles published per month
   const articlesCountByMonth = {}
   articles.forEach((article) => {
     const month = new Date(article.publishedAt).toLocaleString("default", {
@@ -54,7 +51,7 @@ export function DatesGraph({ articles }) {
         borderWidth: 4,
         fill: true,
         backgroundColor: (context) => {
-          const bgColor = ["rgba(0, 88, 185, 0.15)", "rgba(0, 185, 255, 0.00)"]
+          const bgColor = ["rgba(0, 88, 185, 0.4)", "rgba(0, 185, 255, 0.00)"]
 
           if (!context.chart.chartArea) return
 
@@ -74,7 +71,6 @@ export function DatesGraph({ articles }) {
     ],
   }
 
-  // Chart options
   const options = {
     scales: {
       x: {

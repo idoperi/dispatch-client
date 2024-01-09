@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { clr6 } from "../../../assets/style/setup/variables"
 
 export const StyledDateFilter = styled.div`
   position: relative;
@@ -20,7 +21,7 @@ export const Button = styled.button`
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 0.25px;
-    color: #5a5a89;
+    color: ${clr6};
     text-transform: capitalize;
   }
 
@@ -48,7 +49,7 @@ export const Label = styled.label`
   font-size: 14px;
   line-height: 22px;
   letter-spacing: 0.25px;
-  color: #5a5a89;
+  color: ${clr6};
   text-transform: capitalize;
   margin: 0 5px;
 `
@@ -58,5 +59,5 @@ export const ButtonClear = styled.button`
   padding: 8px;
   border-radius: 5px;
   background-color: #ffffff;
-  color: #5a5a89;
+  color: ${clr6};
 `

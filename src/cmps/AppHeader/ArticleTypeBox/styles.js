@@ -1,7 +1,13 @@
 import styled from "styled-components"
+import { mq } from "../../../assets/style/layout/mq.styled"
+import { clr6 } from "../../../assets/style/setup/variables"
 
 export const TypeBox = styled.div`
   position: relative;
+
+  @media ${mq.max.xl} {
+    display: none;
+  }
 `
 
 export const Button = styled.button`
@@ -18,7 +24,7 @@ export const Button = styled.button`
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 0.25px;
-    color: #5a5a89;
+    color: ${clr6};
     text-transform: capitalize;
     margin: 0 16px;
   }
@@ -48,7 +54,7 @@ export const RadioInputContainer = styled.div`
   label {
     div {
       height: 28px;
-      color: #5a5a89;
+      color: ${clr6};
       text-transform: capitalize;
       font-family: Mulish;
       font-size: 12px;

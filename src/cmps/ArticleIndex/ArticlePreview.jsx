@@ -3,8 +3,8 @@ import moment from "moment"
 import arrow from "../../assets/icons/arrow.svg"
 import { Button } from "../../assets/style/cmps/Button.styled"
 
-export function ArticlePreview({ article }) {
-  function getDate() {
+export const ArticlePreview = ({ article }) => {
+  const getDate = () => {
     return moment(article.publishedAt).format("dddd MMM D, YYYY")
   }
 
@@ -24,8 +24,6 @@ export function ArticlePreview({ article }) {
           </Button>
         </Link>
       </div>
-
-      {/* <pre>{JSON.stringify(article, null, 2)}</pre> */}
     </li>
   )
 }

@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { clr6 } from "../setup/variables"
 
 export const NoDataPlaceholder = styled.div<{ size: string }>`
   text-align: center;
@@ -11,6 +12,6 @@ export const NoDataPlaceholder = styled.div<{ size: string }>`
 export const Text = styled.p`
   font-size: 18px;
   line-height: 21px;
-  color: #5a5a89;
+  color: ${clr6};
   margin: 16px 0 0 0;
 `

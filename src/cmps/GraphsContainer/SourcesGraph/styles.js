@@ -21,9 +21,18 @@ export const DoughnutTitle = styled.p`
 `
 
 export const LabelList = styled.ul`
-  padding: 15px;
+  padding: 0 15px;
+  margin: 15px 0;
+  /* padding: 15px; */
   display: grid;
   gap: 11px;
+
+  max-height: 113px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
 `
 
 export const LabelPreview = styled.li`

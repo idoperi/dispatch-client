@@ -1,8 +1,15 @@
 import styled from "styled-components"
-import { clr1 } from "../../assets/style/setup/variables"
+import { mq } from "../../assets/style/layout/mq.styled"
 
 export const ContainerLayout = styled.section`
   display: flex;
   flex-direction: column;
   gap: 30px;
+
+  height: 100%;
+  overflow-y: auto;
+
+  @media ${mq.max.xxl} {
+    display: none;
+  }
 `

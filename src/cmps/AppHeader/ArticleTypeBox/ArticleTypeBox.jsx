@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Button, ModalForm, RadioInputContainer, TypeBox } from "./styles"
 import dropdown from "../../../assets/icons/dropdown.svg"
 
-export function ArticleTypeBox({ target, options, filterBy, handleChange }) {
+export const ArticleTypeBox = ({ target, options, filterBy, handleChange }) => {
   const [isDisplay, setIsDisplay] = useState(false)
 
   return (

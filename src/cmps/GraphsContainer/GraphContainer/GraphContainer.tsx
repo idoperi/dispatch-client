@@ -11,7 +11,7 @@ interface GraphContainerProps {
   children: React.ReactNode
 }
 
-export function GraphContainer({ title, children }: GraphContainerProps) {
+export const GraphContainer = ({ title, children }: GraphContainerProps) => {
   return (
     <StyledGraphContainer>
       <TopContainer>

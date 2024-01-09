@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { clr1 } from "../../../assets/style/setup/variables"
+import { clr1, clr6 } from "../../../assets/style/setup/variables"
 import exitBtn from "../../../assets/icons/exit.svg"
 
 export const Modal = styled.div`
@@ -25,7 +25,7 @@ export const Title = styled.h3`
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;
-  color: #5a5a89;
+  color: ${clr6};
   opacity: 0.8;
   text-transform: uppercase;
 `
@@ -34,7 +34,7 @@ export const ButtonClear = styled.button`
   font-size: 12px;
   font-weight: 700;
   line-height: 22px;
-  color: #5a5a89;
+  color: ${clr6};
   opacity: 0.8;
   text-transform: uppercase;
   padding: 0;
@@ -56,7 +56,7 @@ export const RecentSearchLine = styled.div`
 export const Text = styled.p`
   font-size: 12px;
   letter-spacing: 0.10000000149011612px;
-  color: #5a5a89;
+  color: ${clr6};
   opacity: 0.8;
   flex-grow: 1;
   cursor: pointer;
