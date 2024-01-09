@@ -1,13 +1,21 @@
-import { HeaderContainer, Logo } from "./styles"
+import { ActionsContainer, HeaderContainer, Logo } from "./styles"
 import logo from "../../assets/icons/logo.svg"
+import searchSvg from "../../assets/icons/search.svg"
 import { SearchBar } from "./SearchBar/SearchBar"
+import { NavLink } from "react-router-dom"
 
-export function AppHeader() {
+export const AppHeader = () => {
   return (
     <HeaderContainer>
       <Logo src={logo} />
+
       <SearchBar />
-      <div></div>
+
+      <ActionsContainer>
+        <NavLink to="/search">
+          <img src={searchSvg} alt="" />
+        </NavLink>
+      </ActionsContainer>
     </HeaderContainer>
   )
 }

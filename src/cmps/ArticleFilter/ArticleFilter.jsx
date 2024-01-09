@@ -6,7 +6,7 @@ import { FilterTargets } from "./styles"
 import { DateFilter } from "./DateFilter/DateFilter"
 import { StyledDateFilter } from "./DateFilter/styles"
 
-export function ArticleFilter() {
+export const ArticleFilter = () => {
   const queryClient = useQueryClient()
   const { data: filterBy } = useQuery("filterBy", () =>
     queryClient.getQueryData("filterBy")
@@ -27,7 +27,7 @@ export function ArticleFilter() {
     }
   }, [filterBy.type])
 
-  function handleChange(target, val) {
+  const handleChange = (target, val) => {
     queryClient.setQueryData("filterBy", { ...filterBy, [target]: val })
   }
 

@@ -1,6 +1,10 @@
 import styled, { css } from "styled-components"
 import { clr6 } from "../../../assets/style/setup/variables"
 
+interface Props {
+  checked: boolean
+}
+
 export const StyledOptionBox = styled.div`
   position: relative;
 `
@@ -59,7 +63,7 @@ export const ModalForm = styled.form`
   }
 `
 
-export const RadioInputContainer = styled.div`
+export const RadioInputContainer = styled.div<Props>`
   input {
     display: none;
   }

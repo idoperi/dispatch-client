@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { Full } from "../../assets/style/layout/layout.styled"
 import { mq } from "../../assets/style/layout/mq.styled"
 
 export const StyledFilterHeader = styled.div`
@@ -7,6 +6,7 @@ export const StyledFilterHeader = styled.div`
   background-color: #fff;
 
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
 
   @media ${mq.min.xl} {

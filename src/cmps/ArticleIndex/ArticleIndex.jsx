@@ -6,7 +6,7 @@ import { GraphsContainer } from "../GraphsContainer/GraphsContainer"
 import { LandingTitle, ResultsLabel, StyledArticleIndex } from "./styles"
 import { useEffectUpdate } from "../../customHooks/useEffectUpdate"
 
-export function ArticleIndex() {
+export const ArticleIndex = ({ isMobile = false }) => {
   const queryClient = useQueryClient()
 
   const { data: filterBy } = useQuery("filterBy", () =>
@@ -58,7 +58,7 @@ export function ArticleIndex() {
 
   return (
     <StyledArticleIndex>
-      {isFirstRender.current ? (
+      {!isMobile && isFirstRender.current ? (
         <LandingTitle>Top Headlines in Israel</LandingTitle>
       ) : (
         <ResultsLabel>{totalResults} Total results</ResultsLabel>
