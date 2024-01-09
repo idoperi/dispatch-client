@@ -11,7 +11,7 @@ import { ArticleTypeBox } from "../ArticleTypeBox/ArticleTypeBox"
 import { useState } from "react"
 import { RecentSearchesModal } from "../RecentSearchesModal/RecentSearchesModal"
 
-export function SearchBar() {
+export const SearchBar = () => {
   const queryClient = useQueryClient()
   const { data: filterBy } = useQuery("filterBy", () =>
     queryClient.getQueryData("filterBy")
@@ -24,9 +24,8 @@ export function SearchBar() {
   )
 
   const [searchValue, setSearchValue] = useState("")
-  // const [recentSearches, setRecentSearches] = useState([])
 
-  function handleChange(target, val) {
+  const handleChange = (target, val) => {
     queryClient.setQueryData("filterBy", { ...filterBy, [target]: val })
   }
 
@@ -35,7 +34,7 @@ export function SearchBar() {
     options: ["top headlines", "everything"],
   }
 
-  function onSearch(ev) {
+  const onSearch = (ev) => {
     ev.preventDefault()
     queryClient.setQueryData("isDisplaySearchModal", false)
     queryClient.setQueryData("filterBy", { ...filterBy, q: searchValue })
@@ -45,19 +44,19 @@ export function SearchBar() {
     queryClient.setQueryData("recentSearches", [searchValue, ...recentSearches])
   }
 
-  function onRecentSearchClicked(recentSearch) {
+  const onRecentSearchClicked = (recentSearch) => {
     setSearchValue(recentSearch)
     queryClient.setQueryData("isDisplaySearchModal", false)
     queryClient.setQueryData("filterBy", { ...filterBy, q: searchValue })
   }
 
-  function onRemoveRecentSearch(idx) {
+  const onRemoveRecentSearch = (idx) => {
     const updatedSearches = [...recentSearches]
     updatedSearches.splice(idx, 1)
     queryClient.setQueryData("recentSearches", [...updatedSearches])
   }
 
-  function onClearRecentSearches() {
+  const onClearRecentSearches = () => {
     queryClient.setQueryData("recentSearches", [])
   }
 

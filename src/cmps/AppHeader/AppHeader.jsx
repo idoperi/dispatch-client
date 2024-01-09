@@ -4,7 +4,7 @@ import searchSvg from "../../assets/icons/search.svg"
 import { SearchBar } from "./SearchBar/SearchBar"
 import { NavLink } from "react-router-dom"
 
-export function AppHeader() {
+export const AppHeader = () => {
   return (
     <HeaderContainer>
       <Logo src={logo} />

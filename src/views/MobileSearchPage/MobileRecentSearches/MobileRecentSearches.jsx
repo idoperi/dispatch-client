@@ -9,12 +9,12 @@ import {
   UpperSection,
 } from "./styles"
 
-export function MobileRecentSearches({
+export const MobileRecentSearches = ({
   recentSearches,
   onRecentSearchClicked,
   onRemoveRecentSearch,
   onClearRecentSearches,
-}) {
+}) => {
   return (
     <StyledRecentSearches>
       <UpperSection>

@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { clr1 } from "../../../assets/style/setup/variables"
+import { clr1, clr6 } from "../../../assets/style/setup/variables"
 import exitBtn from "../../../assets/icons/exit.svg"
 
 export const StyledRecentSearches = styled.div``
@@ -12,7 +12,7 @@ export const UpperSection = styled.div`
 `
 
 export const Title = styled.h3`
-  color: #5a5a89;
+  color: ${clr6};
   font-size: 14px;
   font-weight: 500;
   line-height: 22px;
@@ -21,7 +21,7 @@ export const Title = styled.h3`
 `
 
 export const ButtonClear = styled.button`
-  color: #5a5a89;
+  color: ${clr6};
   font-size: 12px;
   font-weight: 700;
   line-height: 22px;
@@ -47,7 +47,7 @@ export const RecentSearchLine = styled.div`
 `
 
 export const Text = styled.p`
-  color: #5a5a89;
+  color: ${clr6};
   font-size: 14px;
   line-height: 22px;
   letter-spacing: 0.25px;

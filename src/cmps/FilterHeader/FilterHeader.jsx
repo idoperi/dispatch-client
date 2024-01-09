@@ -6,10 +6,10 @@ import { useEffect, useState } from "react"
 import { OptionBox } from "../ArticleFilter/OptionBox/OptionBox"
 import { sortByOptions } from "../../services/article.service"
 
-export function FilterHeader() {
+export const FilterHeader = () => {
   const queryClient = useQueryClient()
 
-  function onOpenSideFilter() {
+  const onOpenSideFilter = () => {
     queryClient.setQueryData("isDisplaySideFilter", true)
   }
 
@@ -17,13 +17,16 @@ export function FilterHeader() {
     queryClient.getQueryData("filterBy")
   )
 
-  function handleChange(target, val) {
+  const handleChange = (target, val) => {
     queryClient.setQueryData("filterBy", { ...filterBy, [target]: val })
   }
 
   return (
     <StyledFilterHeader className="full">
-      {filterBy.type === "everything" ? (
+      <ButtonToggleFilter onClick={onOpenSideFilter}>
+        <img src={filterLogo} alt="" />
+      </ButtonToggleFilter>
+      {filterBy.type === "everything" && (
         <OptionBox
           name="sort by"
           filterByKey="sortBy"
@@ -32,12 +35,7 @@ export function FilterHeader() {
           handleChange={handleChange}
           isSmall={true}
         />
-      ) : (
-        <div></div>
       )}
-      <ButtonToggleFilter onClick={onOpenSideFilter}>
-        <img src={filterLogo} alt="" />
-      </ButtonToggleFilter>
     </StyledFilterHeader>
   )
 }

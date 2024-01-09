@@ -7,7 +7,7 @@ import { HomePageSection, SeparateLine } from "./styles"
 import { SideBar } from "../../cmps/SideBar/SideBar"
 import { AppHeader } from "../../cmps/AppHeader/AppHeader"
 
-export function HomePage() {
+export const HomePage = () => {
   return (
     <>
       <AppHeader />

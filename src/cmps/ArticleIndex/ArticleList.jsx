@@ -5,7 +5,7 @@ import {
   Text,
 } from "../../assets/style/cmps/NoDataPlaceholder.styled"
 
-export function ArticleList({ articles, onScroll }) {
+export const ArticleList = ({ articles, onScroll }) => {
   if (articles.length === 0) {
     return (
       <NoDataPlaceholder>

@@ -5,7 +5,7 @@ import { ReactComponent as SearchSvg } from "../../../assets/icons/search.svg"
 import exitSvg from "../../../assets/icons/exit.svg"
 import { useEffect, useRef } from "react"
 
-export function MobileSearchHeader({
+export const MobileSearchHeader = ({
   onSearch,
   searchValue,
   setSearchValue,
@@ -13,7 +13,7 @@ export function MobileSearchHeader({
   onBack,
   isDisplayFeed,
   onExitSearch,
-}) {
+}) => {
   const inputRef = useRef()
 
   useEffect(() => {
@@ -21,13 +21,13 @@ export function MobileSearchHeader({
     return () => {}
   }, [])
 
-  function handleSubmit(ev) {
+  const handleSubmit = (ev) => {
     ev.preventDefault()
     inputRef.current.blur()
     onSearch()
   }
 
-  function getDecoratedValue() {
+  const getDecoratedValue = () => {
     return isDisplayFeed ? `“${searchValue}”` : searchValue
   }
 

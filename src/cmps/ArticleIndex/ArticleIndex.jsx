@@ -6,7 +6,7 @@ import { GraphsContainer } from "../GraphsContainer/GraphsContainer"
 import { LandingTitle, ResultsLabel, StyledArticleIndex } from "./styles"
 import { useEffectUpdate } from "../../customHooks/useEffectUpdate"
 
-export function ArticleIndex({ isMobile = false }) {
+export const ArticleIndex = ({ isMobile = false }) => {
   const queryClient = useQueryClient()
 
   const { data: filterBy } = useQuery("filterBy", () =>

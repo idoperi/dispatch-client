@@ -8,7 +8,7 @@ import { FilterHeader } from "../../cmps/FilterHeader/FilterHeader"
 import { SideBar } from "../../cmps/SideBar/SideBar"
 import { useNavigate } from "react-router-dom"
 
-export function MobileSearch() {
+export const MobileSearch = () => {
   const queryClient = useQueryClient()
   const { data: filterBy } = useQuery("filterBy", () =>
     queryClient.getQueryData("filterBy")
@@ -22,7 +22,7 @@ export function MobileSearch() {
 
   const navigate = useNavigate()
 
-  function onSearch() {
+  const onSearch = () => {
     queryClient.setQueryData("filterBy", { ...filterBy, q: searchValue })
     setIsDisplayFeed(true)
 
@@ -31,33 +31,33 @@ export function MobileSearch() {
     queryClient.setQueryData("recentSearches", [searchValue, ...recentSearches])
   }
 
-  function onBack() {
+  const onBack = () => {
     queryClient.setQueryData("filterBy", { ...filterBy, q: "" })
     navigate("/")
   }
 
-  function onFocus() {
+  const onFocus = () => {
     setIsDisplayFeed(false)
   }
 
-  function onExitSearch() {
+  const onExitSearch = () => {
     setIsDisplayFeed(true)
     setSearchValue(filterBy.q)
   }
 
-  function onRecentSearchClicked(recentSearch) {
+  const onRecentSearchClicked = (recentSearch) => {
     setSearchValue(recentSearch)
     setIsDisplayFeed(true)
     queryClient.setQueryData("filterBy", { ...filterBy, q: recentSearch })
   }
 
-  function onRemoveRecentSearch(idx) {
+  const onRemoveRecentSearch = (idx) => {
     const updatedSearches = [...recentSearches]
     updatedSearches.splice(idx, 1)
     queryClient.setQueryData("recentSearches", [...updatedSearches])
   }
 
-  function onClearRecentSearches() {
+  const onClearRecentSearches = () => {
     queryClient.setQueryData("recentSearches", [])
   }
 
