@@ -1,7 +1,7 @@
 import axios from "axios"
 import articles from "../assets/json/articles.json"
 
-const API_KEY = "7e8d1d6400a74a36b60bc01f5d01d28c"
+const API_KEY = process.env.REACT_APP_API_KEY
 
 export const articleService = {
   query,
