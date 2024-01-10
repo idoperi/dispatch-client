@@ -31,6 +31,10 @@ export const MobileSearchHeader = ({
     return isDisplayFeed ? `“${searchValue}”` : searchValue
   }
 
+  const getDecoratedClass = () => {
+    return isDisplayFeed ? `decorated` : ""
+  }
+
   return (
     <StyledHeader>
       <TransparentButton onClick={onBack}>
@@ -39,13 +43,13 @@ export const MobileSearchHeader = ({
 
       <form onSubmit={handleSubmit} autoComplete="off">
         <SearchInput
+          className={getDecoratedClass()}
           placeholder="Search"
           id="search"
           value={getDecoratedValue()}
           onInput={(ev) => setSearchValue(ev.target.value)}
           ref={inputRef}
           onFocus={onFocus}
-          decorated={isDisplayFeed}
         />
       </form>
 

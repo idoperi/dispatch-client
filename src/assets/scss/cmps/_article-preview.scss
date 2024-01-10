@@ -10,6 +10,10 @@
     height: 100%;
     object-fit: cover;
     border-radius: em(20px) 0 0 em(20px);
+
+    &.loader {
+      object-fit: contain;
+    }
   }
 
   .info-container {

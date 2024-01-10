@@ -41,7 +41,7 @@ export const OptionBox = ({
               id="all"
               name="all"
               value="all"
-              onChange={(ev) => handleInputChanged(ev.target.value)}
+              onChange={() => handleInputChanged("")}
               checked={filterBy[filterByKey] === ""}
             />
             <label htmlFor="all">

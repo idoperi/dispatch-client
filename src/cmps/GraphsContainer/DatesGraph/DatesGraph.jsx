@@ -1,7 +1,21 @@
 import { useRef } from "react"
 import { Line } from "react-chartjs-2"
+import {
+  NoDataPlaceholder,
+  Text,
+} from "../../../assets/style/cmps/NoDataPlaceholder.styled"
+import chart from "../../../assets/icons/chart.svg"
 
 export const DatesGraph = ({ articles }) => {
+  if (articles.length === 0) {
+    return (
+      <NoDataPlaceholder size="sm">
+        <img src={chart} alt="" />
+        <Text>No data to display</Text>
+      </NoDataPlaceholder>
+    )
+  }
+
   const uniqueMonths = Array.from(
     new Set(
       articles.map((article) =>

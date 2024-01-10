@@ -5,6 +5,7 @@ import { useInfiniteQuery, useQuery, useQueryClient } from "react-query"
 import { GraphsContainer } from "../GraphsContainer/GraphsContainer"
 import { LandingTitle, ResultsLabel, StyledArticleIndex } from "./styles"
 import { useEffectUpdate } from "../../customHooks/useEffectUpdate"
+import { ArticleSkeleton } from "./Skeletons/ArticleSkeleton"
 
 export const ArticleIndex = ({ isMobile = false }) => {
   const queryClient = useQueryClient()
@@ -46,7 +47,7 @@ export const ArticleIndex = ({ isMobile = false }) => {
   }
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <ArticleSkeleton />
   }
 
   if (isError) {

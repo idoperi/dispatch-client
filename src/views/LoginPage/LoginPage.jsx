@@ -9,7 +9,6 @@ import {
 } from "./styles"
 import logoSvg from "../../assets/icons/logo.svg"
 import arrowSvg from "../../assets/icons/arrow.svg"
-import { useNavigate } from "react-router-dom"
 import { useAuth0 } from "@auth0/auth0-react"
 
 export function LoginPage() {
@@ -28,13 +27,7 @@ export function LoginPage() {
           blogs across the web
         </Text>
         <SeparateLine></SeparateLine>
-        <Button
-          onClick={() =>
-            loginWithRedirect({
-              redirect_uri: `${window.location.origin}/#/feed`,
-            })
-          }
-        >
+        <Button onClick={() => loginWithRedirect()}>
           <p>Continue</p>
           <img src={arrowSvg} alt="" />
         </Button>

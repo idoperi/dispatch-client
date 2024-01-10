@@ -33,7 +33,7 @@ export const MobileSearch = () => {
 
   const onBack = () => {
     queryClient.setQueryData("filterBy", { ...filterBy, q: "" })
-    navigate("/")
+    navigate("/feed")
   }
 
   const onFocus = () => {

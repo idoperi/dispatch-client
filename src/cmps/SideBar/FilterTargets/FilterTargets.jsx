@@ -38,10 +38,12 @@ export const FilterTargets = ({
           </OptionButton>
         )
       })}
-      <OptionButton onClick={() => setRenderType("dates")}>
-        <Name>Dates</Name>
-        <Value></Value>
-      </OptionButton>
+      {filterBy.type === "everything" && (
+        <OptionButton onClick={() => setRenderType("dates")}>
+          <Name>Dates</Name>
+          <Value></Value>
+        </OptionButton>
+      )}
     </StyledFilterTargets>
   )
 }

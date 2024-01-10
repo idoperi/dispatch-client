@@ -31,9 +31,7 @@ export const TransparentButton = styled.button`
   padding: 0;
 `
 
-export const SearchInput = styled.input<{
-  decorated?: boolean
-}>`
+export const SearchInput = styled.input`
   color: rgba(90, 90, 137, 0.5);
   font-size: 14px;
   line-height: 22px;
@@ -55,5 +53,7 @@ export const SearchInput = styled.input<{
     }
   }
 
-  text-transform: ${({ decorated }) => (decorated ? "uppercase" : "none")};
+  &.decorated {
+    text-transform: uppercase;
+  }
 `

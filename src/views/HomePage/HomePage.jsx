@@ -11,18 +11,6 @@ import { useAuth0 } from "@auth0/auth0-react"
 import { useEffect } from "react"
 
 export const HomePage = () => {
-  // const navigate = useNavigate()
-  // const { isLoading, isAuthenticated } = useAuth0()
-  // console.log("isAuthenticated: ", isAuthenticated)
-  // console.log("isLoading: ", isLoading)
-  // console.log("-------------")
-
-  // useEffect(() => {
-  //   if (!isAuthenticated && !isLoading) {
-  //     navigate("/login")
-  //   }
-  // }, [isAuthenticated, isLoading])
-
   return (
     <>
       <AppHeader />
