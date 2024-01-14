@@ -1,7 +1,7 @@
 import axios from "axios"
 import articles from "../assets/json/articles.json"
 
-const API_KEY = "7e8d1d6400a74a36b60bc01f5d01d28c"
+const API_KEY = process.env.REACT_APP_API_KEY
 
 export const articleService = {
   query,
@@ -11,7 +11,6 @@ export const articleService = {
 }
 
 async function query(filterBy = { title: "" }) {
-  // console.log("filterBy: ", filterBy)
   let baseUrl = "https://newsapi.org/v2/"
 
   if (filterBy.type === "everything") {
@@ -45,18 +44,18 @@ async function query(filterBy = { title: "" }) {
     }
   }
 
-  // try {
-  //   const { data } = await axios.get(baseUrl)
-  //   const { articles, totalResults } = data
-  //   return { articles, totalResults }
-  // } catch (error) {
-  //   console.log("error: ", error)
-  //   return []
-  // }
+  try {
+    const { data } = await axios.get(baseUrl)
+    const { articles, totalResults } = data
+    return { articles, totalResults }
+  } catch (error) {
+    console.log("error: ", error)
+    return []
+  }
 
-  return new Promise((resolve) =>
-    setTimeout(() => resolve({ articles, totalResults: 10 }), 500)
-  )
+  // return new Promise((resolve) =>
+  //   setTimeout(() => resolve({ articles, totalResults: 10 }), 500)
+  // )
 }
 
 function getEmptyArticleFilterBy() {
@@ -138,7 +137,7 @@ const sourcesOptions = [
   { id: "mako", name: "Mako" },
 ]
 
-const sortByOptions = [
+export const sortByOptions = [
   { id: "relevancy", name: "relevancy" },
   { id: "popularity", name: "popularity" },
   { id: "publishedAt", name: "published at" },
@@ -159,4 +158,5 @@ const languageOptions = [
   { id: "en", name: "en" },
   { id: "fr", name: "fr" },
   { id: "es", name: "es" },
+  { id: "jp", name: "jp" },
 ]

@@ -2,15 +2,30 @@ import { Link } from "react-router-dom"
 import moment from "moment"
 import arrow from "../../assets/icons/arrow.svg"
 import { Button } from "../../assets/style/cmps/Button.styled"
+import img from "../../assets/imgs/img.png"
 
-export function ArticlePreview({ article }) {
-  function getDate() {
+export const ArticlePreview = ({ article }) => {
+  const getDate = () => {
     return moment(article.publishedAt).format("dddd MMM D, YYYY")
+  }
+
+  const handleImgError = ({ currentTarget }) => {
+    console.log("currentTarget: ", currentTarget)
+    currentTarget.onerror = null // prevents looping
+    currentTarget.src = img
+  }
+
+  const getImgLoaderClass = () => {
+    return article.urlToImage ? "" : "loader"
   }
 
   return (
     <li className="article-preview">
-      <img className="img" src={article.urlToImage} alt="" />
+      <img
+        className={`img ${getImgLoaderClass()}`}
+        src={article.urlToImage || img}
+        onError={handleImgError}
+      />
 
       <div className="info-container">
         <p className="date">{getDate()}</p>
@@ -24,8 +39,6 @@ export function ArticlePreview({ article }) {
           </Button>
         </Link>
       </div>
-
-      {/* <pre>{JSON.stringify(article, null, 2)}</pre> */}
     </li>
   )
 }

@@ -9,12 +9,12 @@ import {
   UpperSection,
 } from "./styles"
 
-export function RecentSearchesModal({
+export const RecentSearchesModal = ({
   recentSearches,
   onRecentSearchClicked,
   onRemoveRecentSearch,
   onClearRecentSearches,
-}) {
+}) => {
   return (
     <Modal>
       <UpperSection>

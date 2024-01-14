@@ -16,12 +16,12 @@ interface DateFilterProps {
   handleChange: (target: string, val: string) => void
 }
 
-export function DateFilter({ filterBy, handleChange }: DateFilterProps) {
+export const DateFilter = ({ filterBy, handleChange }: DateFilterProps) => {
   const [isDisplay, setIsDisplay] = useState(false)
 
   const queryClient = useQueryClient()
 
-  function onClearDates(ev: React.MouseEvent<HTMLButtonElement>) {
+  const onClearDates = (ev: React.MouseEvent<HTMLButtonElement>) => {
     ev.preventDefault()
     queryClient.setQueryData("filterBy", { ...filterBy, from: "", to: "" })
   }

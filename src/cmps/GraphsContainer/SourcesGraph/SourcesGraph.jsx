@@ -12,7 +12,7 @@ import {
   Text,
 } from "../../../assets/style/cmps/NoDataPlaceholder.styled"
 
-export function SourcesGraph({ articles }) {
+export const SourcesGraph = ({ articles }) => {
   const sourceLabels = articles.map((article) => article.source.name)
   const sourceCount = sourceLabels.reduce((acc, source) => {
     acc[source] = (acc[source] || 0) + 1
@@ -20,8 +20,8 @@ export function SourcesGraph({ articles }) {
   }, {})
 
   const totalArticles = sourceLabels.length
-  const percentages = Object.values(sourceCount).map(
-    (count) => (count / totalArticles) * 100
+  const percentages = Object.values(sourceCount).map((count) =>
+    Math.round((count / totalArticles) * 100)
   )
 
   const colors = utilService.generateColorsArray(

@@ -11,7 +11,7 @@ import { ArticleTypeBox } from "../ArticleTypeBox/ArticleTypeBox"
 import { useState } from "react"
 import { RecentSearchesModal } from "../RecentSearchesModal/RecentSearchesModal"
 
-export function SearchBar() {
+export const SearchBar = () => {
   const queryClient = useQueryClient()
   const { data: filterBy } = useQuery("filterBy", () =>
     queryClient.getQueryData("filterBy")
@@ -19,14 +19,13 @@ export function SearchBar() {
   const { data: isDisplaySearchModal } = useQuery("isDisplaySearchModal", () =>
     queryClient.getQueryData("isDisplaySearchModal")
   )
+  const { data: recentSearches } = useQuery("recentSearches", () =>
+    queryClient.getQueryData("recentSearches")
+  )
 
   const [searchValue, setSearchValue] = useState("")
-  const [recentSearches, setRecentSearches] = useState([])
-  // const [isDisplayModal, setIsDisplayModal] = useState(false)
 
-  // useEffect(() => {}, [recentSearches])
-
-  function handleChange(target, val) {
+  const handleChange = (target, val) => {
     queryClient.setQueryData("filterBy", { ...filterBy, [target]: val })
   }
 
@@ -35,34 +34,30 @@ export function SearchBar() {
     options: ["top headlines", "everything"],
   }
 
-  function onSearch(ev) {
+  const onSearch = (ev) => {
     ev.preventDefault()
     queryClient.setQueryData("isDisplaySearchModal", false)
     queryClient.setQueryData("filterBy", { ...filterBy, q: searchValue })
 
     if (!searchValue) return
-    setRecentSearches((prevRecentSearches) => [
-      searchValue,
-      ...prevRecentSearches,
-    ])
+    if (recentSearches.includes(searchValue)) return
+    queryClient.setQueryData("recentSearches", [searchValue, ...recentSearches])
   }
 
-  function onRecentSearchClicked(recentSearch) {
+  const onRecentSearchClicked = (recentSearch) => {
     setSearchValue(recentSearch)
     queryClient.setQueryData("isDisplaySearchModal", false)
     queryClient.setQueryData("filterBy", { ...filterBy, q: searchValue })
   }
 
-  function onRemoveRecentSearch(idx) {
-    setRecentSearches((prevRecentSearches) => {
-      const updatedSearches = [...prevRecentSearches]
-      updatedSearches.splice(idx, 1)
-      return updatedSearches
-    })
+  const onRemoveRecentSearch = (idx) => {
+    const updatedSearches = [...recentSearches]
+    updatedSearches.splice(idx, 1)
+    queryClient.setQueryData("recentSearches", [...updatedSearches])
   }
 
-  function onClearRecentSearches() {
-    setRecentSearches([])
+  const onClearRecentSearches = () => {
+    queryClient.setQueryData("recentSearches", [])
   }
 
   return (

@@ -7,18 +7,25 @@ import {
 } from "./styles"
 import dropdown from "../../../assets/icons/dropdown.svg"
 
-export function OptionBox({
+export const OptionBox = ({
   name,
   filterByKey,
   options,
   filterBy,
   handleChange,
-}) {
+  isSmall = false,
+}) => {
   const [isDisplay, setIsDisplay] = useState(false)
+
+  const handleInputChanged = (value) => {
+    setIsDisplay((prevIsDisplay) => !prevIsDisplay)
+    handleChange(filterByKey, value)
+  }
 
   return (
     <StyledOptionBox>
       <Button
+        $small={isSmall}
         onClick={() => {
           setIsDisplay((prevIsDisplay) => !prevIsDisplay)
         }}
@@ -28,23 +35,17 @@ export function OptionBox({
       </Button>
       {isDisplay && (
         <ModalForm>
-          <RadioInputContainer
-            key="clear"
-            checked={filterBy[filterByKey] === ""}
-          >
+          <RadioInputContainer key="all" checked={filterBy[filterByKey] === ""}>
             <input
               type="radio"
-              id="clear"
-              name="clear"
-              value="clear"
-              onChange={(ev) => {
-                setIsDisplay((prevIsDisplay) => !prevIsDisplay)
-                handleChange(filterByKey, ev.target.value)
-              }}
+              id="all"
+              name="all"
+              value="all"
+              onChange={() => handleInputChanged("")}
               checked={filterBy[filterByKey] === ""}
             />
-            <label htmlFor="clear">
-              <div>clear</div>
+            <label htmlFor="all">
+              <div>all</div>
             </label>
           </RadioInputContainer>
           {options.map(({ id, name }) => (
@@ -57,10 +58,7 @@ export function OptionBox({
                 id={id}
                 name={id}
                 value={id}
-                onChange={(ev) => {
-                  setIsDisplay((prevIsDisplay) => !prevIsDisplay)
-                  handleChange(filterByKey, ev.currentTarget.value)
-                }}
+                onChange={(ev) => handleInputChanged(ev.currentTarget.value)}
                 checked={filterBy[filterByKey] === id}
               />
               <label htmlFor={id}>

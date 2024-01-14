@@ -5,8 +5,9 @@ import { useInfiniteQuery, useQuery, useQueryClient } from "react-query"
 import { GraphsContainer } from "../GraphsContainer/GraphsContainer"
 import { LandingTitle, ResultsLabel, StyledArticleIndex } from "./styles"
 import { useEffectUpdate } from "../../customHooks/useEffectUpdate"
+import { ArticleSkeleton } from "./Skeletons/ArticleSkeleton"
 
-export function ArticleIndex() {
+export const ArticleIndex = ({ isMobile = false }) => {
   const queryClient = useQueryClient()
 
   const { data: filterBy } = useQuery("filterBy", () =>
@@ -46,7 +47,7 @@ export function ArticleIndex() {
   }
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <ArticleSkeleton />
   }
 
   if (isError) {
@@ -58,7 +59,7 @@ export function ArticleIndex() {
 
   return (
     <StyledArticleIndex>
-      {isFirstRender.current ? (
+      {!isMobile && isFirstRender.current ? (
         <LandingTitle>Top Headlines in Israel</LandingTitle>
       ) : (
         <ResultsLabel>{totalResults} Total results</ResultsLabel>

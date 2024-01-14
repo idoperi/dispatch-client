@@ -2,11 +2,11 @@ import { useEffect, useState } from "react"
 import { articleService } from "../../services/article.service"
 import { useQuery, useQueryClient } from "react-query"
 import { OptionBox } from "./OptionBox/OptionBox"
-import { FilterContainer } from "./styles"
+import { FilterTargets } from "./styles"
 import { DateFilter } from "./DateFilter/DateFilter"
 import { StyledDateFilter } from "./DateFilter/styles"
 
-export function ArticleFilter() {
+export const ArticleFilter = () => {
   const queryClient = useQueryClient()
   const { data: filterBy } = useQuery("filterBy", () =>
     queryClient.getQueryData("filterBy")
@@ -27,12 +27,12 @@ export function ArticleFilter() {
     }
   }, [filterBy.type])
 
-  function handleChange(target, val) {
+  const handleChange = (target, val) => {
     queryClient.setQueryData("filterBy", { ...filterBy, [target]: val })
   }
 
   return (
-    <FilterContainer>
+    <FilterTargets>
       {filterBy.type === "everything" && (
         <DateFilter filterBy={filterBy} handleChange={handleChange} />
       )}
@@ -47,6 +47,6 @@ export function ArticleFilter() {
           handleChange={handleChange}
         />
       ))}
-    </FilterContainer>
+    </FilterTargets>
   )
 }
